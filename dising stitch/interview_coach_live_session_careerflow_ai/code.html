@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Live Interview Session - CareerFlow AI</title>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with custom config -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#e0e3e5",
+                        "surface-container-low": "#eff4ff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#7c839b",
+                        "secondary": "#4648d4",
+                        "on-error-container": "#93000a",
+                        "on-surface-variant": "#45464d",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "surface-container": "#e5eeff",
+                        "error-container": "#ffdad6",
+                        "error": "#ba1a1a",
+                        "surface-container-high": "#dce9ff",
+                        "on-background": "#0b1c30",
+                        "on-surface": "#0b1c30",
+                        "secondary-fixed": "#e1e0ff",
+                        "outline-variant": "#c6c6cd",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed-variant": "#444749",
+                        "surface-tint": "#565e74",
+                        "primary-fixed-dim": "#bec6e0",
+                        "tertiary-fixed-dim": "#c4c7c9",
+                        "on-secondary-fixed": "#07006c",
+                        "outline": "#76777d",
+                        "on-secondary-fixed-variant": "#2f2ebe",
+                        "inverse-surface": "#213145",
+                        "on-tertiary-container": "#818486",
+                        "primary": "#000000",
+                        "background": "#f8f9ff",
+                        "surface-container-highest": "#d3e4fe",
+                        "surface": "#f8f9ff",
+                        "primary-fixed": "#dae2fd",
+                        "on-primary-fixed": "#131b2e",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-tertiary-fixed": "#191c1e",
+                        "surface-bright": "#f8f9ff",
+                        "on-secondary-container": "#fffbff",
+                        "surface-dim": "#cbdbf5",
+                        "on-tertiary": "#ffffff",
+                        "secondary-container": "#6063ee",
+                        "inverse-primary": "#bec6e0",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed-dim": "#c0c1ff",
+                        "primary-container": "#131b2e",
+                        "tertiary": "#000000",
+                        "on-primary": "#ffffff",
+                        "tertiary-container": "#191c1e",
+                        "surface-variant": "#d3e4fe"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "xs": "8px",
+                        "container-max": "1280px",
+                        "gutter": "24px",
+                        "xl": "64px",
+                        "lg": "40px",
+                        "md": "24px",
+                        "sm": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "display": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "display": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-md": ["14px", { "lineHeight": "1", "fontWeight": "500" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-sm": ["20px", { "lineHeight": "1.4", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Hide scrollbar for immersive mode but allow scrolling if needed on small screens */
+        ::-webkit-scrollbar {
+            width: 0px;
+            background: transparent;
+        }
+        .pulse-ring {
+            animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.8); opacity: 0.5; }
+            80%, 100% { transform: scale(2); opacity: 0; }
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface h-screen w-screen overflow-hidden flex flex-col font-body-md antialiased">
+<!-- Minimal Task Header -->
+<header class="flex-none h-16 px-gutter flex items-center justify-between border-b border-outline-variant bg-surface-container-lowest z-10 relative shadow-[0_1px_2px_rgba(15,23,42,0.02)]">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">psychology</span>
+<span class="font-headline-sm text-headline-sm text-primary">Interview Coach</span>
+</div>
+<button class="flex items-center gap-xs px-sm py-xs rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors font-label-md text-label-md border border-transparent hover:border-outline-variant">
+<span class="material-symbols-outlined text-[18px]">close</span>
+            Exit Session
+        </button>
+</header>
+<!-- Main Immersive Canvas -->
+<main class="flex-1 flex flex-col lg:flex-row p-sm lg:p-gutter gap-gutter relative h-[calc(100vh-64px)] overflow-y-auto lg:overflow-hidden max-w-[1600px] mx-auto w-full">
+<!-- Left Panel: Context & Question -->
+<section class="w-full lg:w-[40%] max-w-[600px] flex flex-col gap-lg lg:h-full lg:overflow-y-auto lg:pr-sm py-md">
+<!-- Progress Stepper -->
+<div class="flex flex-col gap-sm">
+<div class="flex justify-between items-center">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Technical Screen</span>
+<span class="font-label-md text-label-md text-primary">Question 3 of 10</span>
+</div>
+<div class="w-full h-1 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full transition-all duration-500" style="width: 30%;"></div>
+</div>
+</div>
+<!-- Question Area -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md lg:p-lg flex flex-col gap-md shadow-[0_4px_20px_rgba(15,23,42,0.03)] relative overflow-hidden">
+<!-- Subtle decorative element -->
+<div class="absolute top-0 left-0 w-1 h-full bg-secondary"></div>
+<h1 class="font-headline-md text-headline-md lg:font-headline-lg lg:text-headline-lg text-on-surface">
+                    Tell me about a machine learning project where you solved a difficult technical problem.
+                </h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-sm">
+                    Focus on your specific contribution, the algorithms evaluated, and how you measured the success of your solution in production.
+                </p>
+</div>
+<!-- AI Cue Badge -->
+<div class="bg-secondary-fixed border border-secondary-fixed-dim rounded-[4px] p-sm flex items-start gap-sm relative overflow-hidden group">
+<div class="absolute inset-0 bg-white opacity-10 pointer-events-none rounded-[4px]"></div>
+<span class="material-symbols-outlined text-on-secondary-fixed-variant mt-1" style="font-variation-settings: 'FILL' 1; font-size: 20px;">lightbulb</span>
+<div class="flex flex-col gap-base">
+<span class="font-label-sm text-label-sm text-on-secondary-fixed-variant uppercase">AI Insight</span>
+<span class="font-body-sm text-body-sm text-on-secondary-fixed">
+                        This is a follow-up to your previous mention of Scikit-learn. Consider detailing your pipeline optimization process.
+                    </span>
+</div>
+</div>
+</section>
+<!-- Right Panel: Video Feed & Controls -->
+<section class="w-full lg:w-[60%] flex-1 flex flex-col gap-md relative h-[512px] lg:h-full min-h-[400px]">
+<!-- Video Container -->
+<div class="flex-1 bg-on-background rounded-xl lg:rounded-2xl relative overflow-hidden shadow-[0_8px_30px_rgba(11,28,48,0.15)] group">
+<!-- Simulated Webcam Feed -->
+<div class="absolute inset-0 w-full h-full bg-cover bg-center object-cover" data-alt="A professional headshot of a candidate looking directly into a webcam during a video interview. They are sitting in a well-lit, minimalist modern home office with a neat background featuring a subtly blurred bookshelf. The lighting is soft and flattering, creating a high-quality, high-trust corporate aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBN2RI5t89IxZZHKKG6qU3Yh44B9UyM_1i1TlsE0krJOE-5rp_AdrNPWAm4rgP9wcC110XyJJgtYMrg6KompsK-nDJJE6HglDCJqAfFHWpVkW8Be6-azlAdfaJdMKpyiD5OUhS2z4XU27y5l5Sw0LzrIO0-1an6bj0qpAAv9iCnLDM0RQ9lcaLlmydE636B9P1j2fbC-75LgxdgWIfEx6WNV6u_1oKY7hRnjGuZ-d13crpMOBqw68AU')"></div>
+<!-- UI Overlay (Gradient for legibility) -->
+<div class="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60 pointer-events-none"></div>
+<!-- Recording Status Indicator -->
+<div class="absolute top-md left-md flex items-center gap-xs bg-error-container/90 backdrop-blur-sm border border-error/20 text-on-error-container px-sm py-xs rounded-full shadow-sm z-10">
+<div class="relative flex items-center justify-center w-3 h-3">
+<span class="absolute inline-flex h-full w-full rounded-full bg-error opacity-75 pulse-ring"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-error"></span>
+</div>
+<span class="font-label-sm text-label-sm tracking-widest font-bold">REC</span>
+<span class="font-label-md text-label-md ml-xs font-mono">01:42</span>
+</div>
+<!-- Mic Status -->
+<div class="absolute top-md right-md flex items-center justify-center w-10 h-10 bg-surface-container-lowest/20 backdrop-blur-md border border-white/10 rounded-full text-white z-10">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">mic</span>
+</div>
+<!-- Central Control Bar (Floating) -->
+<div class="absolute bottom-md lg:bottom-lg left-1/2 transform -translate-x-1/2 flex items-center gap-sm bg-surface-container-lowest/90 backdrop-blur-xl border border-white/20 p-xs rounded-full shadow-lg z-20">
+<button class="w-12 h-12 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-surface-variant transition-colors" title="Mute Audio">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">mic</span>
+</button>
+<button class="w-12 h-12 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-surface-variant transition-colors" title="Turn off Camera">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">videocam</span>
+</button>
+<div class="w-px h-8 bg-outline-variant mx-xs"></div>
+<!-- Stop Recording / Submit Action -->
+<button class="flex items-center gap-xs bg-error hover:bg-[#a31515] text-on-error px-lg py-sm rounded-full font-label-md text-label-md transition-all shadow-md active:scale-95 group">
+<span class="material-symbols-outlined text-[20px] group-hover:scale-110 transition-transform" style="font-variation-settings: 'FILL' 1;">stop_circle</span>
+                        Stop Answer
+                    </button>
+</div>
+</div>
+</section>
+</main>
+</body></html>

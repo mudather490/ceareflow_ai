@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CareerFlow AI - Turn Your Resume Into Your Career Advantage</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "tertiary-fixed": "#e0e3e5",
+                "surface-container-low": "#eff4ff",
+                "surface-container-lowest": "#ffffff",
+                "on-primary-container": "#7c839b",
+                "secondary": "#4648d4",
+                "on-error-container": "#93000a",
+                "on-surface-variant": "#45464d",
+                "on-primary-fixed-variant": "#3f465c",
+                "surface-container": "#e5eeff",
+                "error-container": "#ffdad6",
+                "error": "#ba1a1a",
+                "surface-container-high": "#dce9ff",
+                "on-background": "#0b1c30",
+                "on-surface": "#0b1c30",
+                "secondary-fixed": "#e1e0ff",
+                "outline-variant": "#c6c6cd",
+                "on-error": "#ffffff",
+                "on-tertiary-fixed-variant": "#444749",
+                "surface-tint": "#565e74",
+                "primary-fixed-dim": "#bec6e0",
+                "tertiary-fixed-dim": "#c4c7c9",
+                "on-secondary-fixed": "#07006c",
+                "outline": "#76777d",
+                "on-secondary-fixed-variant": "#2f2ebe",
+                "inverse-surface": "#213145",
+                "on-tertiary-container": "#818486",
+                "primary": "#000000",
+                "background": "#f8f9ff",
+                "surface-container-highest": "#d3e4fe",
+                "surface": "#f8f9ff",
+                "primary-fixed": "#dae2fd",
+                "on-primary-fixed": "#131b2e",
+                "inverse-on-surface": "#eaf1ff",
+                "on-tertiary-fixed": "#191c1e",
+                "surface-bright": "#f8f9ff",
+                "on-secondary-container": "#fffbff",
+                "surface-dim": "#cbdbf5",
+                "on-tertiary": "#ffffff",
+                "secondary-container": "#6063ee",
+                "inverse-primary": "#bec6e0",
+                "on-secondary": "#ffffff",
+                "secondary-fixed-dim": "#c0c1ff",
+                "primary-container": "#131b2e",
+                "tertiary": "#000000",
+                "on-primary": "#ffffff",
+                "tertiary-container": "#191c1e",
+                "surface-variant": "#d3e4fe"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+        },
+        "spacing": {
+                "base": "4px",
+                "xs": "8px",
+                "container-max": "1280px",
+                "gutter": "24px",
+                "xl": "64px",
+                "lg": "40px",
+                "md": "24px",
+                "sm": "16px"
+        },
+        "fontFamily": {
+                "headline-lg-mobile": ["Inter"],
+                "label-sm": ["Inter"],
+                "headline-lg": ["Inter"],
+                "display": ["Inter"],
+                "label-md": ["Inter"],
+                "headline-md": ["Inter"],
+                "body-sm": ["Inter"],
+                "body-md": ["Inter"],
+                "body-lg": ["Inter"],
+                "headline-sm": ["Inter"]
+        },
+        "fontSize": {
+                "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                "label-sm": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                "display": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "label-md": ["14px", {"lineHeight": "1", "fontWeight": "500"}],
+                "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                "headline-sm": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}]
+        }
+    }
+  }
+}
+    </script>
+<style>
+        body { background-color: #F8FAFC; color: #0b1c30; }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        .ai-glow {
+            box-shadow: 0 0 20px rgba(96, 99, 238, 0.15);
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface antialiased bg-background">
+<!-- TopNavBar (Shared Component) -->
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-gutter h-16 bg-surface dark:bg-surface-dim border-b border-outline-variant dark:border-outline">
+<div class="flex items-center gap-sm">
+<span class="text-headline-md font-headline-md font-bold text-primary dark:text-primary-fixed">CareerFlow AI</span>
+</div>
+<div class="hidden md:flex gap-md items-center">
+<a class="text-label-md font-label-md text-on-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-high transition-colors px-3 py-2 rounded" href="#how-it-works">How it Works</a>
+<a class="text-label-md font-label-md text-on-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-high transition-colors px-3 py-2 rounded" href="#features">Features</a>
+<a class="text-label-md font-label-md text-on-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-high transition-colors px-3 py-2 rounded" href="#pricing">Pricing</a>
+</div>
+<div class="flex items-center gap-xs">
+<button class="p-2 hover:bg-surface-container rounded-full text-primary dark:text-primary-fixed opacity-80 transition-all">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 hover:bg-surface-container rounded-full text-primary dark:text-primary-fixed opacity-80 transition-all">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+<button class="hidden md:block bg-primary text-on-primary text-label-md font-label-md px-4 py-2 rounded-lg hover:opacity-90 transition-opacity ml-2">
+                Login
+            </button>
+</div>
+</nav>
+<!-- Main Canvas -->
+<main class="pt-24 pb-lg max-w-container-max mx-auto px-gutter md:px-lg w-full flex flex-col gap-xl">
+<!-- Hero Section -->
+<section class="flex flex-col md:flex-row items-center gap-lg min-h-[716px]">
+<div class="flex-1 flex flex-col gap-md">
+<div class="inline-flex items-center gap-xs bg-surface-container-high px-3 py-1 rounded-full w-fit">
+<span class="w-2 h-2 bg-secondary rounded-full"></span>
+<span class="text-label-sm font-label-sm text-secondary">Intelligent Career Partner</span>
+</div>
+<h1 class="text-display font-display text-primary leading-tight">Turn Your Resume Into Your <span class="text-secondary">Career Advantage</span></h1>
+<p class="text-body-lg font-body-lg text-on-surface-variant max-w-2xl">Create a recruiter-ready profile, practice interviews with AI, and improve your resume — all from one career profile.</p>
+<div class="flex flex-col sm:flex-row gap-sm mt-4">
+<button class="bg-primary text-on-primary text-label-md font-label-md px-6 py-4 rounded-lg hover:opacity-90 transition-all shadow-[0_4px_20px_rgba(15,23,42,0.1)]">
+                        Create My Career Profile
+                    </button>
+<button class="bg-transparent border border-outline text-primary text-label-md font-label-md px-6 py-4 rounded-lg hover:bg-surface-container transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">play_circle</span>
+                        See How It Works
+                    </button>
+</div>
+<div class="flex items-center gap-sm mt-4 text-body-sm text-on-surface-variant">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full bg-surface-container border-2 border-white flex items-center justify-center"><span class="material-symbols-outlined text-xs">person</span></div>
+<div class="w-8 h-8 rounded-full bg-surface-container border-2 border-white flex items-center justify-center"><span class="material-symbols-outlined text-xs">person</span></div>
+<div class="w-8 h-8 rounded-full bg-surface-container border-2 border-white flex items-center justify-center"><span class="material-symbols-outlined text-xs">person</span></div>
+</div>
+<span>Joined by 10,000+ professionals</span>
+</div>
+</div>
+<div class="flex-1 w-full relative">
+<div class="absolute inset-0 bg-secondary/5 rounded-3xl blur-3xl transform rotate-3"></div>
+<div class="glass-panel rounded-2xl p-sm shadow-[0_8px_30px_rgb(0,0,0,0.04)] relative z-10 ai-glow">
+<img class="w-full rounded-lg object-cover border border-outline-variant/30 aspect-video" data-alt="A modern, high-fidelity UI dashboard showing a candidate's career profile with resume analytics, skills matrix, and a prominent AI feedback score in soft indigo tones. Minimalist, corporate, bright white background, high-trust aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIaOuRcnwV4G3wAgdmmTpX7IoqLa_WH7N91dWULYzE_ay8dLBfH_F2MMY-8Jw5cNNH6lSJBlMzAM2tmakkxTfpY4EjhAitJiAv6ZWOBBsb0pdp0YeF1v5xy8QAJNiflxBi6uchwa--mGHHSpFovP7dhBkd_Vo_A_ruLnBi1TOy8I1SORwepqBNJLP_MCvV02Mr7mNlznJtn81fSljM1DJ-7DU7uHYYK-ouyYLn_GBHMFUQ-v5XVePK"/>
+</div>
+<!-- Floating Badge -->
+<div class="absolute -bottom-6 -left-6 glass-panel p-4 rounded-lg flex items-center gap-3 shadow-lg z-20">
+<div class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined">auto_awesome</span>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Resume Score</p>
+<p class="text-headline-sm font-headline-sm text-primary">94/100</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Features (Bento Grid) -->
+<section class="flex flex-col gap-md mt-xl" id="features">
+<div class="text-center max-w-2xl mx-auto mb-lg">
+<h2 class="text-headline-lg font-headline-lg text-primary">Powerful Modules for Every Step</h2>
+<p class="text-body-md font-body-md text-on-surface-variant mt-2">Our AI analyzes your unique career profile to provide personalized coaching and document generation.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-sm md:gap-md">
+<!-- Feature 1 -->
+<div class="bg-surface-container-lowest rounded-xl p-md border border-outline-variant hover:shadow-[0_4px_20px_rgba(15,23,42,0.05)] transition-all flex flex-col gap-sm md:col-span-2">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center text-secondary mb-2">
+<span class="material-symbols-outlined" data-weight="fill">description</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-primary">Resume AI</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant mb-4">Instantly tailor your resume to any job description. Our AI highlights your most relevant experience and suggests powerful action verbs.</p>
+<div class="mt-auto h-48 rounded-lg overflow-hidden border border-outline-variant relative bg-surface-container-low flex items-center justify-center">
+<img class="w-full h-full object-cover opacity-80" data-alt="A clean, minimalist UI component showing a resume document being scanned by a subtle glowing horizontal line, highlighting key bullet points in soft indigo. High-key lighting, modern corporate vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGQ9UvfyNlBX6LbaArzNYMRz8rGyQ7IPRMWIs9amrLRqvd_Bj7LfLJeTJdZsKjNKKH7puozSrWM8wexdOsyXo8YVU0qJPegdkXc_afKQDv97Rg-v0h-7RkA1ZYRWh5GHFIB-OTYy2U9S5sAEGpxDCAQ4R8cryTN1KguV7mOtQVbE2acwsNbSHpZeiw7pFbrMqhuKfkG6Ej6CTRCOXaetD9SH2q95d5BdOXrtIZ_eTeQ16KQ45JHHwd"/>
+</div>
+</div>
+<!-- Feature 2 -->
+<div class="bg-surface-container-lowest rounded-xl p-md border border-outline-variant hover:shadow-[0_4px_20px_rgba(15,23,42,0.05)] transition-all flex flex-col gap-sm">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center text-secondary mb-2">
+<span class="material-symbols-outlined" data-weight="fill">psychology</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-primary">Interview Coach</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant mb-4">Practice with our AI interviewer. Get real-time feedback on your tone, pacing, and answer structure.</p>
+<div class="mt-auto bg-surface-container-highest p-3 rounded-lg border border-outline-variant/50">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-secondary text-sm">auto_awesome</span>
+<span class="text-label-sm font-label-sm text-secondary">AI Insight</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant text-xs italic">"Consider structuring your answer using the STAR method to provide more concrete examples."</p>
+</div>
+</div>
+<!-- Feature 3 -->
+<div class="bg-surface-container-lowest rounded-xl p-md border border-outline-variant hover:shadow-[0_4px_20px_rgba(15,23,42,0.05)] transition-all flex flex-col gap-sm">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center text-secondary mb-2">
+<span class="material-symbols-outlined" data-weight="fill">video_camera_front</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-primary">Video Resume</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Stand out with a polished video introduction. Teleprompter included.</p>
+</div>
+<!-- Feature 4 -->
+<div class="bg-surface-container-lowest rounded-xl p-md border border-outline-variant hover:shadow-[0_4px_20px_rgba(15,23,42,0.05)] transition-all flex flex-col gap-sm md:col-span-2 bg-gradient-to-br from-surface-container-lowest to-surface-container">
+<div class="flex justify-between items-start">
+<div>
+<div class="w-12 h-12 rounded-lg bg-white flex items-center justify-center text-secondary mb-2 shadow-sm">
+<span class="material-symbols-outlined" data-weight="fill">person_book</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-primary">Unified Career Profile</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant max-w-md">Maintain a single, comprehensive record of your skills and experience. Every module draws from this central truth.</p>
+</div>
+<button class="bg-secondary text-on-secondary text-label-sm font-label-sm px-4 py-2 rounded-full hover:bg-secondary/90 transition-colors hidden sm:block">
+                            Explore Profile
+                        </button>
+</div>
+</div>
+</div>
+</section>
+</main>
+</body></html>

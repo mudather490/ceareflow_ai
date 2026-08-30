@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sign Up - CareerFlow AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#e0e3e5",
+                        "surface-container-low": "#eff4ff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#7c839b",
+                        "secondary": "#4648d4",
+                        "on-error-container": "#93000a",
+                        "on-surface-variant": "#45464d",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "surface-container": "#e5eeff",
+                        "error-container": "#ffdad6",
+                        "error": "#ba1a1a",
+                        "surface-container-high": "#dce9ff",
+                        "on-background": "#0b1c30",
+                        "on-surface": "#0b1c30",
+                        "secondary-fixed": "#e1e0ff",
+                        "outline-variant": "#c6c6cd",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed-variant": "#444749",
+                        "surface-tint": "#565e74",
+                        "primary-fixed-dim": "#bec6e0",
+                        "tertiary-fixed-dim": "#c4c7c9",
+                        "on-secondary-fixed": "#07006c",
+                        "outline": "#76777d",
+                        "on-secondary-fixed-variant": "#2f2ebe",
+                        "inverse-surface": "#213145",
+                        "on-tertiary-container": "#818486",
+                        "primary": "#000000",
+                        "background": "#f8f9ff",
+                        "surface-container-highest": "#d3e4fe",
+                        "surface": "#f8f9ff",
+                        "primary-fixed": "#dae2fd",
+                        "on-primary-fixed": "#131b2e",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-tertiary-fixed": "#191c1e",
+                        "surface-bright": "#f8f9ff",
+                        "on-secondary-container": "#fffbff",
+                        "surface-dim": "#cbdbf5",
+                        "on-tertiary": "#ffffff",
+                        "secondary-container": "#6063ee",
+                        "inverse-primary": "#bec6e0",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed-dim": "#c0c1ff",
+                        "primary-container": "#131b2e",
+                        "tertiary": "#000000",
+                        "on-primary": "#ffffff",
+                        "tertiary-container": "#191c1e",
+                        "surface-variant": "#d3e4fe"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "xs": "8px",
+                        "container-max": "1280px",
+                        "gutter": "24px",
+                        "xl": "64px",
+                        "lg": "40px",
+                        "md": "24px",
+                        "sm": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "display": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "display": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-md": ["14px", { "lineHeight": "1", "fontWeight": "500" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-sm": ["20px", { "lineHeight": "1.4", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid #E2E8F0;
+        }
+        .ai-glow-btn {
+            background-color: #6063ee;
+            position: relative;
+            overflow: hidden;
+        }
+        .ai-glow-btn::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at center, rgba(255,255,255,0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .ai-glow-btn:hover::after {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-background min-h-screen flex items-center justify-center p-sm md:p-md relative overflow-hidden font-body-md text-on-background">
+<!-- Decorative background elements -->
+<div class="absolute top-[-10%] left-[-5%] w-[40vw] h-[40vw] rounded-full bg-secondary/5 blur-[100px] pointer-events-none"></div>
+<div class="absolute bottom-[-10%] right-[-5%] w-[30vw] h-[30vw] rounded-full bg-primary/5 blur-[100px] pointer-events-none"></div>
+<main class="w-full max-w-[480px] z-10 relative">
+<!-- Logo Anchor -->
+<div class="text-center mb-lg">
+<h1 class="text-headline-lg font-headline-lg text-primary tracking-tight">CareerFlow AI</h1>
+<p class="text-body-md font-body-md text-on-surface-variant mt-xs">The Intelligent Partner for your career journey.</p>
+</div>
+<!-- Auth Card -->
+<div class="glass-card rounded-xl p-md md:p-lg shadow-[0_4px_40px_rgba(15,23,42,0.04)]">
+<!-- SSO Option -->
+<button class="w-full flex items-center justify-center gap-xs py-3 px-4 border border-outline-variant rounded-lg hover:bg-surface-container transition-colors duration-200 group">
+<svg class="w-5 h-5" viewbox="0 0 24 24">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"></path>
+</svg>
+<span class="text-label-md font-label-md text-on-surface group-hover:text-primary transition-colors">Continue with Google</span>
+</button>
+<!-- Divider -->
+<div class="flex items-center my-md">
+<div class="flex-grow border-t border-outline-variant"></div>
+<span class="px-3 text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">or sign up with email</span>
+<div class="flex-grow border-t border-outline-variant"></div>
+</div>
+<!-- Form -->
+<form class="space-y-sm">
+<div>
+<label class="block text-label-md font-label-md text-on-surface mb-xs" for="name">Full Name</label>
+<div class="relative">
+<span class="absolute inset-y-0 left-0 flex items-center pl-3 text-on-surface-variant pointer-events-none">
+<span class="material-symbols-outlined text-[20px]" data-icon="person">person</span>
+</span>
+<input class="w-full bg-surface-bright border border-outline-variant text-body-md text-on-surface rounded-lg pl-10 pr-4 py-3 focus:ring-1 focus:ring-primary focus:border-primary transition-all duration-200" id="name" name="name" placeholder="Jane Doe" required="" type="text"/>
+</div>
+</div>
+<div>
+<label class="block text-label-md font-label-md text-on-surface mb-xs" for="email">Professional Email</label>
+<div class="relative">
+<span class="absolute inset-y-0 left-0 flex items-center pl-3 text-on-surface-variant pointer-events-none">
+<span class="material-symbols-outlined text-[20px]" data-icon="mail">mail</span>
+</span>
+<input class="w-full bg-surface-bright border border-outline-variant text-body-md text-on-surface rounded-lg pl-10 pr-4 py-3 focus:ring-1 focus:ring-primary focus:border-primary transition-all duration-200" id="email" name="email" placeholder="jane@example.com" required="" type="email"/>
+</div>
+</div>
+<div>
+<label class="block text-label-md font-label-md text-on-surface mb-xs" for="password">Password</label>
+<div class="relative">
+<span class="absolute inset-y-0 left-0 flex items-center pl-3 text-on-surface-variant pointer-events-none">
+<span class="material-symbols-outlined text-[20px]" data-icon="lock">lock</span>
+</span>
+<input class="w-full bg-surface-bright border border-outline-variant text-body-md text-on-surface rounded-lg pl-10 pr-4 py-3 focus:ring-1 focus:ring-primary focus:border-primary transition-all duration-200" id="password" name="password" placeholder="••••••••" required="" type="password"/>
+</div>
+<p class="text-label-sm font-label-sm text-on-surface-variant mt-2">Must be at least 8 characters.</p>
+</div>
+<div class="pt-sm">
+<button class="w-full bg-primary text-on-primary text-label-md font-label-md py-3 px-4 rounded-lg hover:bg-inverse-surface transition-colors duration-200 flex justify-center items-center gap-xs" type="submit">
+                        Create Account
+                        <span class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</form>
+<p class="text-center text-body-sm font-body-sm text-on-surface-variant mt-md">
+                Already have an account? <a class="text-secondary font-medium hover:underline focus:outline-none focus:ring-2 focus:ring-secondary rounded" href="#">Log in</a>
+</p>
+</div>
+<p class="text-center text-label-sm font-label-sm text-on-surface-variant mt-sm">
+            By signing up, you agree to our <a class="underline hover:text-on-surface" href="#">Terms of Service</a> and <a class="underline hover:text-on-surface" href="#">Privacy Policy</a>.
+        </p>
+</main>
+</body></html>

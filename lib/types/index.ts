@@ -1,0 +1,134 @@
+export type ExperienceDTO = {
+  id: string;
+  careerProfileId: string;
+  userId: string;
+  company: string;
+  title: string;
+  location: string | null;
+  startDate: string | null;
+  endDate: string | null;
+  isCurrent: boolean;
+  bullets: { text: string; order: number }[];
+  orderIndex: number;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type EducationDTO = {
+  id: string;
+  careerProfileId: string;
+  userId: string;
+  institution: string;
+  degree: string;
+  field: string | null;
+  startDate: string | null;
+  endDate: string | null;
+  isCurrent: boolean;
+  description: string | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type SkillDTO = {
+  id: string;
+  careerProfileId: string;
+  userId: string;
+  name: string;
+  category: string | null;
+  proficiency: number | null;
+  createdAt: string;
+};
+
+export type ProjectDTO = {
+  id: string;
+  careerProfileId: string;
+  userId: string;
+  name: string;
+  description: string;
+  url: string | null;
+  techStack: string[];
+  orderIndex: number;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type CertificationDTO = {
+  id: string;
+  careerProfileId: string;
+  userId: string;
+  name: string;
+  issuer: string | null;
+  issuedDate: string | null;
+  url: string | null;
+  createdAt: string;
+};
+
+export type CareerProfileDTO = {
+  id: string;
+  userId: string;
+  displayName: string;
+  avatarUrl: string | null;
+  headlineTitle: string | null;
+  summary: string | null;
+  location: string | null;
+  contactEmail: string | null;
+  linkedinUrl: string | null;
+  portfolioUrl: string | null;
+  completionScore: number;
+  lastEditedAt: string;
+  createdAt: string;
+  updatedAt: string;
+  experiences: ExperienceDTO[];
+  education: EducationDTO[];
+  skills: SkillDTO[];
+  projects: ProjectDTO[];
+  certifications: CertificationDTO[];
+};
+
+export type JobDTO = {
+  id: string;
+  userId: string;
+  title: string;
+  company: string;
+  description: string;
+  descriptionHash: string;
+  source: "video_resume" | "interview" | "resume_ai" | "manual";
+  createdAt: string;
+};
+
+export type ResumeVersionDTO = {
+  id: string;
+  resumeId: string;
+  versionNumber: number;
+  filePath: string | null;
+  fileUrl?: string | null;
+  extractedText: string | null;
+  parsedData: Record<string, unknown> | null;
+  source: "upload" | "generated";
+  createdAt: string;
+};
+
+export type MatchDTO = {
+  id: string;
+  jobId: string;
+  score: number;
+  breakdown: { label: string; status: "strong" | "partial" | "missing" }[];
+  talkingPoints: string[];
+};
+
+export type ApiErrorCode =
+  | "VALIDATION_ERROR"
+  | "UNAUTHORIZED"
+  | "FORBIDDEN"
+  | "NOT_FOUND"
+  | "RATE_LIMITED"
+  | "AI_UNAVAILABLE"
+  | "INTERNAL_ERROR";
+
+export type ApiError = {
+  code: ApiErrorCode;
+  message: string;
+  field?: string;
+};
+
+export type ApiResponse<T> = { data: T; error: null } | { data: null; error: ApiError };

@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Video Resume Match Results - CareerFlow AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "tertiary-fixed": "#e0e3e5",
+                        "surface-container-low": "#eff4ff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#7c839b",
+                        "secondary": "#4648d4",
+                        "on-error-container": "#93000a",
+                        "on-surface-variant": "#45464d",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "surface-container": "#e5eeff",
+                        "error-container": "#ffdad6",
+                        "error": "#ba1a1a",
+                        "surface-container-high": "#dce9ff",
+                        "on-background": "#0b1c30",
+                        "on-surface": "#0b1c30",
+                        "secondary-fixed": "#e1e0ff",
+                        "outline-variant": "#c6c6cd",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed-variant": "#444749",
+                        "surface-tint": "#565e74",
+                        "primary-fixed-dim": "#bec6e0",
+                        "tertiary-fixed-dim": "#c4c7c9",
+                        "on-secondary-fixed": "#07006c",
+                        "outline": "#76777d",
+                        "on-secondary-fixed-variant": "#2f2ebe",
+                        "inverse-surface": "#213145",
+                        "on-tertiary-container": "#818486",
+                        "primary": "#000000",
+                        "background": "#f8f9ff",
+                        "surface-container-highest": "#d3e4fe",
+                        "surface": "#f8f9ff",
+                        "primary-fixed": "#dae2fd",
+                        "on-primary-fixed": "#131b2e",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-tertiary-fixed": "#191c1e",
+                        "surface-bright": "#f8f9ff",
+                        "on-secondary-container": "#fffbff",
+                        "surface-dim": "#cbdbf5",
+                        "on-tertiary": "#ffffff",
+                        "secondary-container": "#6063ee",
+                        "inverse-primary": "#bec6e0",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed-dim": "#c0c1ff",
+                        "primary-container": "#131b2e",
+                        "tertiary": "#000000",
+                        "on-primary": "#ffffff",
+                        "tertiary-container": "#191c1e",
+                        "surface-variant": "#d3e4fe"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "base": "4px",
+                        "xs": "8px",
+                        "container-max": "1280px",
+                        "gutter": "24px",
+                        "xl": "64px",
+                        "lg": "40px",
+                        "md": "24px",
+                        "sm": "16px"
+                    },
+                    fontFamily: {
+                        "headline-lg-mobile": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "display": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-sm": ["Inter"]
+                    },
+                    fontSize: {
+                        "headline-lg-mobile": ["24px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "display": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-md": ["14px", { "lineHeight": "1", "fontWeight": "500" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-sm": ["20px", { "lineHeight": "1.4", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .ai-glow {
+            box-shadow: 0 0 20px rgba(96, 99, 238, 0.15);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col md:flex-row">
+<!-- SideNavBar (Web) -->
+<nav class="hidden lg:flex flex-col h-screen fixed left-0 top-0 pt-lg pb-md px-sm border-r border-outline-variant bg-surface-container-lowest w-64 z-40">
+<div class="mb-lg">
+<h1 class="text-headline-sm font-headline-sm font-black text-primary">CareerFlow AI</h1>
+<p class="text-label-sm font-label-sm text-on-surface-variant mt-base">Active Career Profile</p>
+</div>
+<div class="flex flex-col gap-xs flex-grow overflow-y-auto">
+<a class="flex items-center gap-sm px-sm py-xs text-on-surface-variant hover:bg-surface-container-high transition-all duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="dashboard">dashboard</span>
+<span class="text-label-md font-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-xs text-on-surface-variant hover:bg-surface-container-high transition-all duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="person_book">person_book</span>
+<span class="text-label-md font-label-md">Career Profile</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-xs bg-secondary-container text-on-secondary-container font-bold rounded-lg transition-transform scale-100" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="video_camera_front" data-weight="fill" style="font-variation-settings: 'FILL' 1;">video_camera_front</span>
+<span class="text-label-md font-label-md">Video Resume</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-xs text-on-surface-variant hover:bg-surface-container-high transition-all duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="psychology">psychology</span>
+<span class="text-label-md font-label-md">Interview Coach</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-xs text-on-surface-variant hover:bg-surface-container-high transition-all duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="description">description</span>
+<span class="text-label-md font-label-md">Resume AI</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-xs text-on-surface-variant hover:bg-surface-container-high transition-all duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="work_history">work_history</span>
+<span class="text-label-md font-label-md">My Applications</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-xs text-on-surface-variant hover:bg-surface-container-high transition-all duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="analytics">analytics</span>
+<span class="text-label-md font-label-md">Analytics</span>
+</a>
+</div>
+<div class="mt-auto pt-md border-t border-outline-variant">
+<a class="flex items-center gap-sm px-sm py-xs text-on-surface-variant hover:bg-surface-container-high transition-all duration-200 rounded-lg mb-sm" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="settings">settings</span>
+<span class="text-label-md font-label-md">Settings</span>
+</a>
+<button class="w-full bg-primary text-on-primary py-sm rounded-lg text-label-md font-label-md hover:bg-inverse-surface transition-colors">
+                New Application
+            </button>
+</div>
+</nav>
+<!-- TopNavBar (Mobile) / Top Bar space (Desktop) -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-gutter h-16 bg-surface border-b border-outline-variant lg:hidden">
+<div class="text-headline-md font-headline-md font-bold text-primary">CareerFlow AI</div>
+<div class="flex gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:bg-surface-container p-xs rounded-full" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:bg-surface-container p-xs rounded-full" data-icon="account_circle">account_circle</span>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-16 lg:pt-0 lg:ml-64 bg-background min-h-screen">
+<div class="max-w-container-max mx-auto px-sm md:px-gutter py-md md:py-lg">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row md:items-center justify-between mb-lg gap-sm">
+<div>
+<h2 class="text-headline-lg-mobile md:text-headline-lg font-headline-lg-mobile md:font-headline-lg text-on-background">AI Match Results</h2>
+<p class="text-body-md font-body-md text-on-surface-variant mt-base">Senior Machine Learning Engineer at TechCorp</p>
+</div>
+<div class="flex gap-sm">
+<button class="px-md py-xs rounded-lg border border-outline-variant text-on-background text-label-md font-label-md hover:bg-surface-container-low transition-colors">
+                        Edit Job
+                    </button>
+<button class="px-md py-xs rounded-lg bg-secondary text-on-secondary text-label-md font-label-md hover:bg-secondary-container transition-colors shadow-sm ai-glow">
+                        Create My Introduction
+                    </button>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-md">
+<!-- Match Score Card (Left Column) -->
+<div class="lg:col-span-4 flex flex-col gap-md">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md flex flex-col items-center justify-center relative overflow-hidden ai-glow">
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-secondary to-primary"></div>
+<h3 class="text-label-md font-label-md text-on-surface-variant uppercase tracking-wider mb-sm">Overall Match</h3>
+<!-- Circular Progress Indicator (CSS) -->
+<div class="relative w-40 h-40 flex items-center justify-center my-md">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 100 100">
+<circle cx="50" cy="50" fill="transparent" r="45" stroke="#e2e8f0" stroke-width="8"></circle>
+<circle cx="50" cy="50" fill="transparent" r="45" stroke="#4648d4" stroke-dasharray="282.7" stroke-dashoffset="50.8" stroke-width="8"></circle>
+</svg>
+<div class="absolute flex flex-col items-center">
+<span class="text-display font-display text-primary">82<span class="text-headline-md">%</span></span>
+</div>
+</div>
+<p class="text-body-sm font-body-sm text-center text-on-surface-variant mt-sm">
+                            Strong alignment with required technical skills. Minor gaps in cloud deployment tools.
+                        </p>
+</div>
+<!-- AI Insights Mini-Card -->
+<div class="bg-surface-container border border-outline-variant rounded-xl p-md">
+<div class="flex items-center gap-xs mb-sm">
+<span class="material-symbols-outlined text-secondary" data-icon="lightbulb" data-weight="fill" style="font-variation-settings: 'FILL' 1;">lightbulb</span>
+<span class="text-label-md font-label-md font-bold text-secondary">AI Insight</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+                            Focus your video introduction on your end-to-end Machine Learning pipeline experience to bridge the perceived gap in Kubernetes.
+                        </p>
+</div>
+</div>
+<!-- Detailed Breakdown (Right Column) -->
+<div class="lg:col-span-8 flex flex-col gap-md">
+<!-- Skills Breakdown Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md">
+<h3 class="text-headline-sm font-headline-sm text-on-background mb-md border-b border-outline-variant pb-xs">Skills Breakdown</h3>
+<div class="space-y-sm">
+<!-- Strong Match -->
+<div>
+<div class="flex items-center justify-between mb-xs">
+<span class="text-label-md font-label-md text-on-background flex items-center gap-xs">
+<span class="w-2 h-2 rounded-full bg-green-500"></span> Strong Match
+                                    </span>
+</div>
+<div class="flex flex-wrap gap-xs">
+<span class="px-sm py-base bg-surface text-on-surface border border-outline-variant rounded-full text-label-sm font-label-sm">Python</span>
+<span class="px-sm py-base bg-surface text-on-surface border border-outline-variant rounded-full text-label-sm font-label-sm">Machine Learning</span>
+<span class="px-sm py-base bg-surface text-on-surface border border-outline-variant rounded-full text-label-sm font-label-sm">Data Analysis</span>
+<span class="px-sm py-base bg-surface text-on-surface border border-outline-variant rounded-full text-label-sm font-label-sm">SQL</span>
+</div>
+</div>
+<!-- Partial Match -->
+<div class="pt-sm border-t border-surface-variant">
+<div class="flex items-center justify-between mb-xs">
+<span class="text-label-md font-label-md text-on-background flex items-center gap-xs">
+<span class="w-2 h-2 rounded-full bg-yellow-500"></span> Partial Match
+                                    </span>
+</div>
+<div class="flex flex-wrap gap-xs">
+<span class="px-sm py-base bg-surface text-on-surface border border-outline-variant rounded-full text-label-sm font-label-sm">PyTorch</span>
+<span class="px-sm py-base bg-surface text-on-surface border border-outline-variant rounded-full text-label-sm font-label-sm">TensorFlow</span>
+</div>
+</div>
+<!-- Missing / Weak -->
+<div class="pt-sm border-t border-surface-variant">
+<div class="flex items-center justify-between mb-xs">
+<span class="text-label-md font-label-md text-on-background flex items-center gap-xs">
+<span class="w-2 h-2 rounded-full bg-red-500"></span> Missing / Weak
+                                    </span>
+</div>
+<div class="flex flex-wrap gap-xs">
+<span class="px-sm py-base bg-error-container text-error border border-error-container rounded-full text-label-sm font-label-sm">AWS</span>
+<span class="px-sm py-base bg-error-container text-error border border-error-container rounded-full text-label-sm font-label-sm">Kubernetes</span>
+</div>
+</div>
+</div>
+</div>
+<!-- AI Recommendations for Video -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md">
+<h3 class="text-headline-sm font-headline-sm text-on-background mb-md border-b border-outline-variant pb-xs">Talking Points for Video</h3>
+<div class="space-y-sm">
+<div class="flex gap-sm p-sm rounded-lg bg-surface-container-lowest border border-outline-variant hover:shadow-[0px_4px_20px_rgba(15,23,42,0.05)] transition-shadow">
+<div class="text-secondary mt-base">
+<span class="material-symbols-outlined" data-icon="check_circle">check_circle</span>
+</div>
+<div>
+<h4 class="text-label-md font-label-md font-semibold text-on-background mb-base">Highlight your Python &amp; ML depth</h4>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Discuss your recent project optimizing a recommendation engine. This directly addresses their core requirement.</p>
+</div>
+</div>
+<div class="flex gap-sm p-sm rounded-lg bg-surface-container-lowest border border-outline-variant hover:shadow-[0px_4px_20px_rgba(15,23,42,0.05)] transition-shadow">
+<div class="text-secondary mt-base">
+<span class="material-symbols-outlined" data-icon="check_circle">check_circle</span>
+</div>
+<div>
+<h4 class="text-label-md font-label-md font-semibold text-on-background mb-base">Address the AWS/Kubernetes gap</h4>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Mention your eagerness to learn their specific deployment stack, noting your rapid adaptation to Docker in previous roles.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center h-16 bg-surface border-t border-outline-variant lg:hidden pb-safe">
+<a class="flex flex-col items-center gap-base p-xs text-on-surface-variant" href="#">
+<span class="material-symbols-outlined text-[24px]" data-icon="dashboard">dashboard</span>
+<span class="text-[10px] font-label-sm">Dashboard</span>
+</a>
+<a class="flex flex-col items-center gap-base p-xs text-secondary font-bold" href="#">
+<span class="material-symbols-outlined text-[24px]" data-icon="video_camera_front" data-weight="fill" style="font-variation-settings: 'FILL' 1;">video_camera_front</span>
+<span class="text-[10px] font-label-sm">Video</span>
+</a>
+<a class="flex flex-col items-center gap-base p-xs text-on-surface-variant" href="#">
+<span class="material-symbols-outlined text-[24px]" data-icon="work_history">work_history</span>
+<span class="text-[10px] font-label-sm">Apps</span>
+</a>
+</nav>
+</body></html>

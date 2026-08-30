@@ -1,0 +1,16 @@
+{
+  "extends": ["next/core-web-vitals", "next/typescript"],
+  "rules": {
+    "no-restricted-imports": [
+      "error",
+      {
+        "paths": [
+          {
+            "name": "@/lib/supabase/service",
+            "message": "service client is only allowed in app/api/public/* and lib/storage/signedUrl.ts"
+          }
+        ]
+      }
+    ]
+  }
+}

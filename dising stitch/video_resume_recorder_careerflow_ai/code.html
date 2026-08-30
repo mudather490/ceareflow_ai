@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CareerFlow AI - Video Resume</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed": "#e0e3e5",
+                      "surface-container-low": "#eff4ff",
+                      "surface-container-lowest": "#ffffff",
+                      "on-primary-container": "#7c839b",
+                      "secondary": "#4648d4",
+                      "on-error-container": "#93000a",
+                      "on-surface-variant": "#45464d",
+                      "on-primary-fixed-variant": "#3f465c",
+                      "surface-container": "#e5eeff",
+                      "error-container": "#ffdad6",
+                      "error": "#ba1a1a",
+                      "surface-container-high": "#dce9ff",
+                      "on-background": "#0b1c30",
+                      "on-surface": "#0b1c30",
+                      "secondary-fixed": "#e1e0ff",
+                      "outline-variant": "#c6c6cd",
+                      "on-error": "#ffffff",
+                      "on-tertiary-fixed-variant": "#444749",
+                      "surface-tint": "#565e74",
+                      "primary-fixed-dim": "#bec6e0",
+                      "tertiary-fixed-dim": "#c4c7c9",
+                      "on-secondary-fixed": "#07006c",
+                      "outline": "#76777d",
+                      "on-secondary-fixed-variant": "#2f2ebe",
+                      "inverse-surface": "#213145",
+                      "on-tertiary-container": "#818486",
+                      "primary": "#000000",
+                      "background": "#f8f9ff",
+                      "surface-container-highest": "#d3e4fe",
+                      "surface": "#f8f9ff",
+                      "primary-fixed": "#dae2fd",
+                      "on-primary-fixed": "#131b2e",
+                      "inverse-on-surface": "#eaf1ff",
+                      "on-tertiary-fixed": "#191c1e",
+                      "surface-bright": "#f8f9ff",
+                      "on-secondary-container": "#fffbff",
+                      "surface-dim": "#cbdbf5",
+                      "on-tertiary": "#ffffff",
+                      "secondary-container": "#6063ee",
+                      "inverse-primary": "#bec6e0",
+                      "on-secondary": "#ffffff",
+                      "secondary-fixed-dim": "#c0c1ff",
+                      "primary-container": "#131b2e",
+                      "tertiary": "#000000",
+                      "on-primary": "#ffffff",
+                      "tertiary-container": "#191c1e",
+                      "surface-variant": "#d3e4fe"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "base": "4px",
+                      "xs": "8px",
+                      "container-max": "1280px",
+                      "gutter": "24px",
+                      "xl": "64px",
+                      "lg": "40px",
+                      "md": "24px",
+                      "sm": "16px"
+              },
+              "fontFamily": {
+                      "headline-lg-mobile": [
+                              "Inter"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "display": [
+                              "Inter"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "headline-sm": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "headline-lg-mobile": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "1",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-sm": [
+                              "20px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .ai-glow {
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md h-full flex flex-col md:flex-row overflow-hidden">
+<!-- Collapsed SideNavBar for focused workspace -->
+<nav class="hidden md:flex flex-col h-screen fixed left-0 top-0 pt-lg pb-md px-xs border-r border-outline-variant w-20 bg-surface-container-lowest z-40 items-center">
+<div class="mb-xl flex justify-center">
+<span class="material-symbols-outlined text-primary text-3xl icon-fill" data-icon="rocket_launch">rocket_launch</span>
+</div>
+<ul class="flex flex-col gap-sm w-full items-center">
+<li>
+<a class="flex items-center justify-center w-12 h-12 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all duration-200" href="#" title="Dashboard">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+</a>
+</li>
+<li>
+<a class="flex items-center justify-center w-12 h-12 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all duration-200" href="#" title="Career Profile">
+<span class="material-symbols-outlined" data-icon="person_book">person_book</span>
+</a>
+</li>
+<li>
+<a class="flex items-center justify-center w-12 h-12 rounded-lg bg-secondary-container text-on-secondary-container font-bold" href="#" title="Video Resume">
+<span class="material-symbols-outlined icon-fill" data-icon="video_camera_front">video_camera_front</span>
+</a>
+</li>
+<li>
+<a class="flex items-center justify-center w-12 h-12 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all duration-200" href="#" title="Interview Coach">
+<span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+</a>
+</li>
+</ul>
+<div class="mt-auto flex flex-col gap-sm w-full items-center">
+<a class="flex items-center justify-center w-12 h-12 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all duration-200" href="#" title="Settings">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</a>
+<button class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center overflow-hidden border border-outline-variant">
+<span class="material-symbols-outlined text-sm" data-icon="person">person</span>
+</button>
+</div>
+</nav>
+<!-- TopNavBar (Mobile only for this focused view) -->
+<header class="md:hidden fixed top-0 w-full z-50 flex justify-between items-center px-sm h-16 bg-surface border-b border-outline-variant">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="arrow_back">arrow_back</span>
+<span class="font-headline-sm text-headline-sm font-bold text-primary">Video Resume</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="more_vert">more_vert</span>
+</div>
+</header>
+<!-- Main Workspace -->
+<main class="flex-1 flex flex-col h-full md:ml-20 pt-16 md:pt-0 overflow-hidden bg-slate-50">
+<!-- Header & Stepper -->
+<div class="px-gutter py-md bg-surface-container-lowest border-b border-outline-variant flex flex-col md:flex-row justify-between items-start md:items-center gap-4 shrink-0 z-10">
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-on-surface">Acme Corp Product Manager</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Application ID: #APP-2024-892</p>
+</div>
+<div class="flex items-center gap-2 w-full md:w-auto overflow-x-auto pb-2 md:pb-0 hide-scrollbar">
+<div class="flex items-center gap-2 shrink-0 text-on-surface-variant opacity-60">
+<div class="w-6 h-6 rounded-full border border-current flex items-center justify-center font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-sm" data-icon="check">check</span>
+</div>
+<span class="font-label-md text-label-md">1 Setup</span>
+<div class="w-8 h-px bg-current mx-2"></div>
+</div>
+<div class="flex items-center gap-2 shrink-0 text-secondary font-bold">
+<div class="w-6 h-6 rounded-full bg-secondary text-on-secondary flex items-center justify-center font-label-sm text-label-sm">
+                        2
+                    </div>
+<span class="font-label-md text-label-md">Create Video</span>
+<div class="w-8 h-px bg-outline-variant mx-2"></div>
+</div>
+<div class="flex items-center gap-2 shrink-0 text-on-surface-variant opacity-60">
+<div class="w-6 h-6 rounded-full border border-current flex items-center justify-center font-label-sm text-label-sm">
+                        3
+                    </div>
+<span class="font-label-md text-label-md">Review &amp; Submit</span>
+</div>
+</div>
+</div>
+<!-- Two Column Content -->
+<div class="flex-1 flex flex-col lg:flex-row overflow-hidden relative">
+<!-- Left: Script Panel -->
+<div class="w-full lg:w-5/12 xl:w-1/3 flex flex-col bg-surface-container-lowest border-r border-outline-variant h-full shrink-0 z-10 shadow-[4px_0_24px_rgba(15,23,42,0.02)]">
+<!-- Script Header -->
+<div class="p-md border-b border-outline-variant flex justify-between items-center bg-white sticky top-0 z-10">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" data-icon="edit_document">edit_document</span>
+<h2 class="font-headline-sm text-headline-sm font-semibold">AI Script</h2>
+</div>
+<div class="flex gap-2">
+<button class="p-2 rounded-lg hover:bg-surface-container transition-colors text-on-surface-variant" title="Regenerate">
+<span class="material-symbols-outlined" data-icon="refresh">refresh</span>
+</button>
+<button class="p-2 rounded-lg hover:bg-surface-container transition-colors text-on-surface-variant" title="Edit">
+<span class="material-symbols-outlined" data-icon="edit">edit</span>
+</button>
+</div>
+</div>
+<!-- Script Content -->
+<div class="flex-1 overflow-y-auto p-md space-y-6 bg-slate-50 relative">
+<!-- AI Badge floating -->
+<div class="absolute top-4 right-4 bg-secondary-fixed text-on-secondary-fixed-variant px-2 py-1 rounded font-label-sm text-label-sm flex items-center gap-1 z-10 shadow-sm">
+<span class="material-symbols-outlined text-[14px]" data-icon="auto_awesome">auto_awesome</span>
+                        Generated
+                    </div>
+<!-- Script Sections -->
+<div class="relative pl-6 before:content-[''] before:absolute before:left-2 before:top-2 before:bottom-0 before:w-[2px] before:bg-outline-variant">
+<!-- Opening -->
+<div class="mb-6 relative">
+<div class="absolute -left-6 top-1 w-4 h-4 rounded-full bg-secondary border-4 border-slate-50 z-10"></div>
+<h3 class="font-label-md text-label-md text-on-surface-variant mb-2 uppercase tracking-wider">Opening</h3>
+<div class="bg-white p-4 rounded-lg border border-slate-200 shadow-sm hover:shadow-[0_4px_20px_rgba(15,23,42,0.05)] transition-shadow">
+<p class="font-body-md text-body-md text-on-surface">
+                                    "Hi, I'm Alex. I'm thrilled to apply for the Product Manager position at Acme Corp. Your recent launch of the Nexus platform completely changed how I think about user onboarding."
+                                </p>
+</div>
+</div>
+<!-- Experience -->
+<div class="mb-6 relative">
+<div class="absolute -left-6 top-1 w-4 h-4 rounded-full bg-slate-300 border-4 border-slate-50 z-10"></div>
+<h3 class="font-label-md text-label-md text-on-surface-variant mb-2 uppercase tracking-wider">Experience</h3>
+<div class="bg-white p-4 rounded-lg border border-slate-200 shadow-sm hover:shadow-[0_4px_20px_rgba(15,23,42,0.05)] transition-shadow">
+<p class="font-body-md text-body-md text-on-surface">
+                                    "Over the past 5 years at TechNova, I led a cross-functional team of 12 to deliver a B2B analytics dashboard that increased customer retention by 24%."
+                                </p>
+</div>
+</div>
+<!-- Skills -->
+<div class="mb-6 relative">
+<div class="absolute -left-6 top-1 w-4 h-4 rounded-full bg-slate-300 border-4 border-slate-50 z-10"></div>
+<h3 class="font-label-md text-label-md text-on-surface-variant mb-2 uppercase tracking-wider">Skills</h3>
+<div class="bg-white p-4 rounded-lg border border-slate-200 shadow-sm hover:shadow-[0_4px_20px_rgba(15,23,42,0.05)] transition-shadow">
+<p class="font-body-md text-body-md text-on-surface">
+                                    "My core strengths lie in agile methodology, stakeholder management, and translating complex technical requirements into actionable user stories."
+                                </p>
+</div>
+</div>
+<!-- Closing -->
+<div class="relative">
+<div class="absolute -left-6 top-1 w-4 h-4 rounded-full bg-slate-300 border-4 border-slate-50 z-10"></div>
+<h3 class="font-label-md text-label-md text-on-surface-variant mb-2 uppercase tracking-wider">Closing</h3>
+<div class="bg-white p-4 rounded-lg border border-slate-200 shadow-sm hover:shadow-[0_4px_20px_rgba(15,23,42,0.05)] transition-shadow">
+<p class="font-body-md text-body-md text-on-surface">
+                                    "I'd love to bring this data-driven approach to Acme Corp. Thank you for your time, and I look forward to discussing how I can contribute to your team."
+                                </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Script Footer / Actions -->
+<div class="p-md bg-white border-t border-outline-variant z-10">
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4 text-center italic text-xs">
+                        This script is personalized based on your profile and the matched job.
+                    </p>
+<div class="flex gap-2">
+<button class="flex-1 py-2 px-4 rounded-lg border border-outline-variant text-on-surface font-label-md text-label-md hover:bg-surface-container-lowest transition-colors bg-white">
+                            Shorten
+                        </button>
+<button class="flex-1 py-2 px-4 rounded-lg bg-secondary text-on-secondary font-label-md text-label-md hover:bg-secondary-container transition-colors shadow-sm ai-glow">
+                            Use Teleprompter
+                        </button>
+</div>
+</div>
+</div>
+<!-- Right: Video Recorder Canvas -->
+<div class="flex-1 bg-neutral-900 relative h-[512px] lg:h-full flex flex-col justify-center items-center overflow-hidden">
+<!-- Camera Feed Placeholder (Simulated) -->
+<div class="absolute inset-0 w-full h-full object-cover opacity-80" data-alt="A professional looking individual sitting in a well-lit home office, looking directly at the camera, ready for a video interview. The background is slightly blurred, featuring a plant and a bookshelf. The lighting is soft and flattering, creating a modern, high-trust, corporate aesthetic suitable for a career platform. The image is taken from a webcam perspective." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuChb8ELRECvSnfNA5uV6GJJhoE9G2JCjqHbg0R8ET3bFIKS-LC8Xq3Qf2Y4E3_7FEkynf0ppa3vzUDONY9-RLWYTNE4tD2fVgHZ-xlPdycNn08BUwNd0Efi-8rzlR7KO6XAPiavyeJYVAgPnSALbPw_du_EEyWyBVZ1QL_l_kpTKyUiBbjzAkJ-NSFJhbIvFNwdwEvGTDIkLYdAcGN_J74mJobMuKTk1nzpeBdobiuySVpRtjtcDWXU')"></div>
+<!-- Overlay Gradients for UI visibility -->
+<div class="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-black/60 to-transparent z-10"></div>
+<div class="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-10"></div>
+<!-- Top Recording HUD -->
+<div class="absolute top-6 left-6 right-6 flex justify-between items-start z-20">
+<div class="glass-card px-4 py-2 rounded-full flex items-center gap-2 text-white">
+<div class="w-3 h-3 rounded-full bg-red-500 animate-pulse"></div>
+<span class="font-label-md text-label-md font-mono">00:00:00</span>
+</div>
+<div class="flex gap-2">
+<button class="glass-card w-10 h-10 rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="settings">settings</span>
+</button>
+</div>
+</div>
+<!-- Teleprompter Overlay (Subtle) -->
+<div class="absolute top-24 left-1/2 -translate-x-1/2 w-3/4 max-w-xl text-center z-20 opacity-90 pointer-events-none">
+<p class="text-white text-2xl md:text-3xl font-display font-medium leading-relaxed drop-shadow-md">
+<span class="text-white/40">"Hi, I'm Alex. I'm</span> thrilled to apply for the Product Manager position...
+                     </p>
+</div>
+<!-- Bottom Controls -->
+<div class="absolute bottom-8 left-0 right-0 flex flex-col items-center gap-6 z-20">
+<!-- Primary Record Action -->
+<button class="w-20 h-20 rounded-full border-4 border-white/30 flex items-center justify-center group hover:border-white/50 transition-all">
+<div class="w-14 h-14 bg-red-500 rounded-full group-hover:scale-95 transition-transform flex items-center justify-center shadow-[0_0_20px_rgba(239,68,68,0.4)]">
+<span class="material-symbols-outlined text-white text-3xl" data-icon="videocam">videocam</span>
+</div>
+</button>
+<!-- Secondary Controls -->
+<div class="flex gap-4">
+<button class="glass-card px-4 py-2 rounded-lg flex items-center gap-2 text-white hover:bg-white/20 transition-colors text-sm font-label-md">
+<span class="material-symbols-outlined text-[18px]" data-icon="mic">mic</span>
+                            Audio On
+                        </button>
+<button class="glass-card px-4 py-2 rounded-lg flex items-center gap-2 text-white hover:bg-white/20 transition-colors text-sm font-label-md">
+<span class="material-symbols-outlined text-[18px]" data-icon="blur_on">blur_on</span>
+                            Blur BG
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>
