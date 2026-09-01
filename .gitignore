@@ -49,3 +49,5 @@ logs/
 # temp
 tmp/
 temp/
+supabase/.temp/
+supabase/COMBINED_*.sql
