@@ -11,9 +11,13 @@ export default async function CareerProfilePage() {
   } = await supabase.auth.getUser();
 
   let profile = null;
+  let resumeVersions: Awaited<ReturnType<typeof CareerProfileService.listResumeVersions>> = [];
   if (user) {
-    profile = await CareerProfileService.getProfileByUserId(user.id);
+    [profile, resumeVersions] = await Promise.all([
+      CareerProfileService.getProfileByUserId(user.id),
+      CareerProfileService.listResumeVersions(user.id),
+    ]);
   }
 
-  return <CareerProfileClient initialProfile={profile} />;
+  return <CareerProfileClient initialProfile={profile} initialResumeVersions={resumeVersions} />;
 }

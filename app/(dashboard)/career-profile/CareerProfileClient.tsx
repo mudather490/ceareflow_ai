@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { CareerProfileDTO } from "@/lib/types";
+import { CareerProfileDTO, ResumeVersionDTO } from "@/lib/types";
 import { ParsedResumeDTO } from "@/lib/ai/services/resumeParser";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -13,11 +13,13 @@ import { EditProfileModal } from "@/components/career-profile/EditProfileModal";
 
 type Props = {
   initialProfile: CareerProfileDTO | null;
+  initialResumeVersions?: ResumeVersionDTO[];
 };
 
-export function CareerProfileClient({ initialProfile }: Props) {
+export function CareerProfileClient({ initialProfile, initialResumeVersions = [] }: Props) {
   const router = useRouter();
   const [profile, setProfile] = useState<CareerProfileDTO | null>(initialProfile);
+  const [resumeVersions, setResumeVersions] = useState<ResumeVersionDTO[]>(initialResumeVersions);
   const [isUploadOpen, setIsUploadOpen] = useState(false);
   const [isEditHeaderOpen, setIsEditHeaderOpen] = useState(false);
   const [stagedData, setStagedData] = useState<ParsedResumeDTO | null>(null);
@@ -40,10 +42,17 @@ export function CareerProfileClient({ initialProfile }: Props) {
 
   const handleRefresh = async () => {
     try {
-      const res = await fetch("/api/profile");
-      const json = await res.json();
-      if (json.data) {
-        setProfile(json.data);
+      const [profileRes, resumeRes] = await Promise.all([
+        fetch("/api/profile"),
+        fetch("/api/profile/resume-versions"),
+      ]);
+      const profileJson = await profileRes.json().catch(() => null);
+      const resumeJson = await resumeRes.json().catch(() => null);
+      if (profileJson?.data) {
+        setProfile(profileJson.data);
+      }
+      if (resumeJson?.data && Array.isArray(resumeJson.data)) {
+        setResumeVersions(resumeJson.data as ResumeVersionDTO[]);
       }
       router.refresh();
     } catch {
@@ -82,6 +91,39 @@ export function CareerProfileClient({ initialProfile }: Props) {
           )}
         </div>
       </header>
+
+      {/* Current Resume — proves persistence: always fetched from Supabase via GET /api/profile/resume-versions */}
+      {resumeVersions.length > 0 ? (
+        <Card className="p-5 border-secondary/20 bg-secondary/5">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
+            <div>
+              <h3 className="text-label-md font-bold uppercase tracking-wider text-primary flex items-center gap-2">
+                <span className="material-symbols-outlined text-secondary text-[18px]">description</span>
+                Current Resume — v{resumeVersions[0].versionNumber} • {resumeVersions[0].source} • {new Date(resumeVersions[0].createdAt).toLocaleDateString()}
+              </h3>
+              <p className="text-body-sm text-on-surface-variant mt-1">
+                Stored in private Supabase Storage at <code className="px-1 py-0.5 bg-surface-container rounded text-label-sm break-all">{resumeVersions[0].filePath || "private path"}</code> — reused by Resume AI, Video Resume, and Public Profile. Latest upload persists after reload.
+              </p>
+              {resumeVersions.length > 1 && (
+                <p className="text-body-sm text-on-surface-variant mt-1">{resumeVersions.length} versions total — newest shown.</p>
+              )}
+            </div>
+            <Button variant="outline" size="sm" onClick={() => setIsUploadOpen(true)} className="shrink-0">
+              <span className="material-symbols-outlined text-[16px] mr-1">upload_file</span> Replace Resume
+            </Button>
+          </div>
+        </Card>
+      ) : (
+        <Card className="p-5 border-dashed bg-surface-container-low">
+          <div className="flex items-center gap-3">
+            <span className="material-symbols-outlined text-on-surface-variant">description</span>
+            <div>
+              <p className="text-label-md font-semibold">No resume uploaded yet</p>
+              <p className="text-body-sm text-on-surface-variant">Upload a PDF to create your first resume version. It will appear here and be reused across modules after you reload.</p>
+            </div>
+          </div>
+        </Card>
+      )}
 
       {!hasProfile || !profile ? (
         <EmptyState
