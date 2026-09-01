@@ -1,29 +1,42 @@
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { createClient } from "@/lib/supabase/server";
+import { CareerProfileService } from "@/lib/services/careerProfileService";
+import { JobService } from "@/lib/services/jobService";
+import { InterviewService } from "@/lib/services/interviewService";
+import { InterviewSetupClient } from "@/components/interview/InterviewSetupClient";
 
 export const metadata = { title: "Interview Coach — CareerFlow AI" };
 
-export default function InterviewPage() {
+export default async function InterviewPage() {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) return null;
+
+  const [profile, jobs, sessions] = await Promise.all([
+    CareerProfileService.getProfileByUserId(user.id),
+    JobService.listJobs(user.id),
+    InterviewService.listSessions(user.id),
+  ]);
+
+  const hasProfile = !!profile && profile.experiences.length > 0;
+
   return (
     <div className="space-y-6">
-      <header>
+      <header className="pb-4 border-b border-outline-variant">
         <h1 className="text-headline-lg font-semibold text-on-background">Interview Coach</h1>
-        <p className="text-body-md text-on-surface-variant mt-1">Setup → Live → Results. Full immersive session ships in Phase 5.</p>
+        <p className="text-body-md text-on-surface-variant mt-1">
+          Prepare for a specific job using your Career Profile and selected Job — no resume re-upload required.
+        </p>
       </header>
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
-        <Card className="lg:col-span-8 p-6">
-          <h3 className="text-headline-sm font-semibold mb-2">Start a new session</h3>
-          <p className="text-body-sm text-on-surface-variant mb-6">Pick a Job from your shared jobs list — no need to re-paste.</p>
-          <div className="rounded-lg border border-dashed border-outline-variant bg-surface-container-low p-8 text-center">
-            <p className="text-body-sm text-on-surface-variant">Job picker + session settings (type, difficulty, 10Q) — Phase 5a</p>
-          </div>
-          <Button disabled className="mt-4">Start Interview</Button>
-        </Card>
-        <Card className="lg:col-span-4 p-6">
-          <h4 className="text-label-md font-semibold mb-2">Recent sessions</h4>
-          <p className="text-body-sm text-on-surface-variant">No sessions yet. Your feedback bento will appear here after Phase 5.</p>
-        </Card>
-      </div>
+
+      <InterviewSetupClient
+        jobs={jobs}
+        sessions={sessions}
+        hasProfile={hasProfile}
+        completionScore={profile?.completionScore}
+      />
     </div>
   );
 }

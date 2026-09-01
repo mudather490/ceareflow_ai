@@ -11,10 +11,17 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { ErrorAlert } from "@/components/shared/ErrorAlert";
 
+function sanitizeNext(input: string | null): string {
+  if (!input) return "/dashboard";
+  if (!input.startsWith("/") || input.startsWith("//") || input.includes("://")) return "/dashboard";
+  if (input.includes("\n") || input.includes("\r")) return "/dashboard";
+  return input;
+}
+
 export function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const next = searchParams.get("next") ?? "/dashboard";
+  const next = sanitizeNext(searchParams.get("next"));
   const [serverError, setServerError] = useState<string | null>(null);
 
   const {

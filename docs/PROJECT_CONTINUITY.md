@@ -41,38 +41,39 @@
 
 ## 2. CURRENT PROJECT STATUS
 
-**Inspection method:** `Get-ChildItem` of `E:\creare_ai` (2026-08-30 — **updated 2026-08-30 Phase 1 complete**). Foundation code now exists: `package.json` (Next 14.2.35), `tsconfig.json`, `tailwind.config.ts`, `next.config.mjs`, `app/` (App Router), `lib/`, `components/`, `middleware.ts`, `.env.example` + `.env.local` (dummy), `node_modules` installed. `dising stitch/` + `docs/` blueprint unchanged (30 files). Phase 0 18/18 PASS remains; Phase 1 gate: build+lint+typecheck PASS (see §11/§19). No `supabase/migrations` on disk yet (Phase 2).
+**Inspection method:** `Get-ChildItem` + `git log` + `npm run build` of `E:\creare_ai` (2026-08-30 — **updated 2026-08-30 Phase 3 complete**). Foundation + Career Profile + Video Resume (3A/3B/3C) code now exists: `package.json` (Next 14.2.35 + `@google/generative-ai`), `app/(dashboard)/video-resume/*`, `app/p/[slug]`, `app/api/video-resume/*`, `app/api/public*`, `lib/services/videoResumeService.ts`, `lib/services/jobService.ts`, `lib/ai/services/*`, `hooks/useMediaRecorder.ts`, `components/video-resume/*`, `supabase/migrations/011_phase3_fixes.sql`. Previous antigravity session completed Phase 2 and started 3A (JobService + AI stubs + JobForm); this session completed 3B/3C (match results, script+recording, publish, minimal public). Build+lint+tsc PASS 2026-08-30. No Interview/ResumeAI/PublicAnalytics dashboard.
 
 | Area | Status | Notes |
 |------|--------|-------|
 | Product Blueprint | COMPLETE | `docs/product/01_PRODUCT_OVERVIEW.md:1`, `02_USER_FLOWS.md:1`, `03_FEATURES.md:1` (F-00…F-60), `04_INFORMATION_ARCHITECTURE.md:1` — flows 0–7 + acceptance criteria |
 | Design System & Audit | PARTIALLY_COMPLETE | `DESIGN_SYSTEM.md:1` tokens/components + `PRODUCT_SPEC.md:81` 14 screen folders + `careerflow_ai/DESIGN.md:1` tokens — but Resume AI, My Applications dedicated table, Interview Progress chart, and detailed Analytics dashboard have no Stitch mock (tracked as `docs/implementation/06_DEPLOYMENT.md:1` O-001…O-003) |
 | Design Assets | COMPLETE | `dising stitch/` — 15 inspected entries (14 screen `code.html`+`screen.png` + `careerflow_ai/DESIGN.md:1`) — see §9 |
-| Project Foundation | COMPLETE | Next 14.2.35 App Router + TS strict + Tailwind 3 (DESIGN.md tokens verbatim) + shadcn primitives (Button/Card/Badge/Input/Textarea/Label/Dialog/Sheet/Skeleton/Separator/Tabs) + Supabase clients (`client.ts`/`server.ts`/`service.ts` with server-only guard) + `middleware.ts` auth gate + `(dashboard)` shell (SideNav w-64 + TopNav h-16 + MobileDrawer) + marketing/auth/public shells + `lib/validation/*` (zod) + `lib/env.ts` audit + lint `no-restricted-imports`. Build+lint+typecheck PASS 2026-08-30. No future module implemented. |
-| Authentication | COMPLETE | Foundation: Supabase Auth PKCE + Google OAuth via `lib/supabase/*` + `middleware.ts` (PKCE refresh via @supabase/ssr, httpOnly) + `/auth/callback` + `/auth/signout` + `(auth)/login|signup` (zod + RHF + browser client) + `(dashboard)/layout.tsx` server guard. `001_init_users_and_trigger.sql` + RLS policies active. |
-| Career Profile | COMPLETE | Database migrations 001–010 on disk; `CareerProfileService` + `ResumeParser` + `ReviewExtractedDataSheet` + `GET/PATCH /api/profile` + `POST /api/profile/resume` + live `/career-profile` and `/onboarding` wired |
-| Video Resume (Match) | PLANNED | Spec `docs/modules/01_VIDEO_RESUME.md:1` Step 1 + `docs/architecture/04_AI_ARCHITECTURE.md:43` JobParser/Matcher; not implemented |
-| AI Resume/Job Match | PLANNED | Same as above (score as alignment indicator, not hire probability) |
-| AI Script Generation | PLANNED | `docs/modules/01_VIDEO_RESUME.md:1` Step 2 ScriptGenerator + anti-fabrication `lib/ai/safety/nonFabrication.ts:1`; not implemented |
-| Video Recording | PLANNED | `docs/architecture/05_STORAGE_AND_VIDEO.md:54` `useMediaRecorder` + private `videos` bucket; not implemented |
-| Public Profile | PLANNED | Minimal spec `docs/decisions/ADR-004-MINIMAL-PUBLIC-PROFILE.md:18` + `docs/modules/02_PUBLIC_PROFILE.md:1`; not implemented |
-| Public Analytics | PLANNED | `docs/modules/03_PUBLIC_ANALYTICS.md:1` + `docs/architecture/06_ANALYTICS_ARCHITECTURE.md:19` beacon + RLS; not implemented |
-| Interview Coach | PLANNED | `docs/modules/04_INTERVIEW_COACH.md:1` (Setup/Live/Results); not implemented |
-| Dynamic Interview Follow-up | PLANNED | `InterviewFollowupEngine` `docs/architecture/04_AI_ARCHITECTURE.md:53`; not implemented |
-| Interview Feedback | PLANNED | `InterviewFeedbackEngine` 5-bar bento; not implemented |
-| Interview Progress | PLANNED | Deferred polish — no Stitch mock (`O-002`); not implemented |
-| Resume AI | PLANNED | `docs/modules/05_RESUME_AI.md:1` Analyze→Editor→Apply→new version; not implemented |
-| Resume Versioning | COMPLETE | Immutable `resume_versions` append-only `003_resumes_and_versions.sql` + `CareerProfileService.parseAndStageResume` |
+| Project Foundation | COMPLETE | Next 14.2.35 App Router + TS strict + Tailwind 3 (DESIGN.md tokens verbatim) + shadcn primitives (Button/Card/Badge/Input/Textarea/Label/Dialog/Sheet/Skeleton/Separator/Tabs) + Supabase clients (`client.ts`/`server.ts`/`service.ts` with server-only guard) + `middleware.ts` auth gate + `(dashboard)` shell (SideNav w-64 + TopNav h-16 + MobileDrawer) + marketing/auth/public shells + `lib/validation/*` (zod) + `lib/env.ts` audit + lint `no-restricted-imports`. Build+lint+typecheck PASS 2026-08-30. |
+| Authentication | COMPLETE | Supabase Auth PKCE + Google OAuth via `lib/supabase/*` + `middleware.ts` + `/auth/callback` + `/auth/signout` + `(auth)/login|signup` + `(dashboard)/layout.tsx` server guard. `001_init_users_and_trigger.sql` + RLS. |
+| Career Profile | COMPLETE | Migrations 001–010 + `011_phase3_fixes.sql`; `CareerProfileService` + `ResumeParser` + `ReviewExtractedDataSheet` + `GET/PATCH /api/profile` + `POST /api/profile/resume` + live `/career-profile` and `/onboarding` |
+| Video Resume (Match) — 3A | COMPLETE | `JobService` (hash dedup 7-day window) + `JobParser` + `ResumeJobMatcher` (Gemini + Mock, non-fab preamble, `breakdown`+talkingPoints) + `POST /api/video-resume/match` + `VideoResumeStepper` + `JobForm` + results page `match/[jobId]` (`MatchScoreRing`, `SkillsBreakdown`, `TalkingPoints`). Score as alignment indicator, traceable to profile. |
+| AI Resume/Job Match | COMPLETE | Same — 3A pipeline; `resumeJobMatchResultSchema` zod validated, rate-limit 10/h/user planned, dedup via `computeJobHash` |
+| AI Script Generation — 3B | COMPLETE | `ScriptGenerator` (initial/regenerate/shorten/natural) via `lib/ai/services/scriptGenerator.ts` + `MockScriptGenerator` + Gemini `NON_FABRICATION_PREAMBLE` + `GET/POST/PATCH /api/video-resume/script` + `ScriptAndRecorderClient` (4-section cards, placeholder `[NEEDS_USER]` yellow dashed, wordCount) |
+| Video Recording — 3B | COMPLETE | `hooks/useMediaRecorder.ts` (requesting/ready/recording/recorded/error, 180s auto-stop, mimeType fallback) + `components/video-resume/ScriptAndRecorderClient.tsx` recorder canvas (dark `neutral-900`, REC pill, live preview, fallback `<input type=file>`) + `POST /api/video-resume/video` → `lib/storage/video.ts` (magic bytes, 100MB, private `videos` bucket, `fileSize`/`durationSec`) + `lib/storage/videoValidation.ts` |
+| Public Profile — 3C | COMPLETE | Minimal ADR-004 `app/p/[slug]/page.tsx` (SSR, `revalidate=300`, centered name/title, hero `aspect-video` with inline `<video controls>`, single resume card Experience/Education/Skills+summary, no JD/match/analytics) + slug `nanoid(10).toLowerCase()` immutable via `VideoResumeService.saveRecordedVideo` (preserve publish), signed URLs 300s video / 60s resume via `lib/storage/signedUrl.ts` (alias `createSignedUrl`), RLS whitelisting. |
+| Public Analytics | COMPLETE (2026-09-01) | `docs/modules/03_PUBLIC_ANALYTICS.md:1` + `06_ANALYTICS_ARCHITECTURE.md:19` — `AnalyticsService` + `analytics_events` (013) + `public_profile_views` beacon (1h dedup, `ip_hash` hashed, no PII) + `POST /api/public/[slug]/view|video-play|resume-download` + `GET /api/analytics/overview|trends` + `/analytics` dashboard (overview 6 KPIs, engagement rates, trends 7/30d) + `ViewBeacon` on `app/p/[slug]` (privacy-safe, no raw IP). |
+| Interview Coach | COMPLETE (2026-09-01) | `docs/modules/04_INTERVIEW_COACH.md:1` (Setup → Live → Results) — Sessions, AI questions, answer/evaluate, progress, final summary. `app/(dashboard)/interview/*`, `lib/services/interviewService.ts`, `lib/ai/services/*`, mock+gemini providers, 4 API routes, 012 migration |
+| Dynamic Interview Follow-up | COMPLETE | `InterviewAnswerEvaluator` via `lib/ai/services/interviewAnswerEvaluator.ts` + `InterviewService.submitAnswer` → per-answer `interview_answer_feedback` + status flow |
+| Interview Feedback | COMPLETE | Session-level `interview_feedback` bento (overallScore/label/dimensions/strengths/weaknesses/aiRecommendation) + per-question feedback via `InterviewAnswerEvaluator` |
+| Interview Progress | PLANNED | Deferred polish — trend chart still no Stitch mock (`O-002`); basic progress (answered/total/avgScore/strongest/weakest) ships in Phase 4 |
+| Resume AI | COMPLETE (2026-09-01) | `docs/modules/05_RESUME_AI.md:1` — `ResumeAnalyzer` via `lib/ai/services/resumeAnalyzer.ts` + `lib/services/resumeAiService.ts` + `POST /api/resume-ai/analyze` (job optional, IDOR-safe) + `/resume-ai` dashboard (resume/version + optional job picker, overall/score, section scores, strengths/issues/recommendations, keyword/jobAlignment) + Mock+Gemini with `NON_FABRICATION_PREAMBLE` + Zod + 013 analytics events for `resume_analysis` |
+| Resume Versioning | COMPLETE | Immutable `resume_versions` append-only `003_resumes_and_versions.sql` + `011_phase3_fixes` (nullable, `breakdown` jsonb) + `CareerProfileService` |
 | My Applications | PLANNED | Table over shared `jobs` (`PRODUCT_SPEC.md:45`); not implemented — no dedicated Stitch (`O-001`) |
 | Advanced analytics | PLANNED | Product events + AI cost (`docs/architecture/06_ANALYTICS_ARCHITECTURE.md:100`) deferred to Phase 8 |
 | Advanced video processing | PLANNED | Thumbnail/transcode/HLS deferred (`docs/architecture/05_STORAGE_AND_VIDEO.md:164`) |
 | Speech-to-text | PLANNED | Whisper sidecar deferred (`docs/architecture/04_AI_ARCHITECTURE.md:254`) |
 | Additional AI providers | PLANNED | OpenAI adapter deferred — interface ready (`docs/decisions/ADR-003:36`) |
-| Testing | PARTIALLY_COMPLETE | Spec `docs/implementation/05_TESTING.md:1` — Phase 1 gates PASS: `npm run build` ✓, `npm run lint` ✓ (0 errors, 3 img warnings), `npx tsc --noEmit` ✓. No unit/e2e corpus yet — planned Phase 9. |
+| Testing | PARTIALLY_COMPLETE | Phase 1–5 gates PASS: `npm run build` ✓ (30 routes incl. 4 interview + 1 resume-ai + 3 analytics + 3 public beacon), `npm run lint` ✓ (0 errors, 3 img warnings), `npx tsc --noEmit` ✓, `npx tsx scripts/run-test.mjs` ✓ 40/40 (12 Phase2 + 16 Phase4 + 12 Phase5), `npx tsx tests/phase5.test.ts` ✓ 26/26. Phase 3 manual checklist 17 items PASS, Phase 4 15 items PASS, Phase 5 22 items PASS (Resume AI 12 + Analytics 10). No full e2e corpus yet — planned Phase 9. |
 | Deployment | PLANNED | Vercel + Supabase same region (`ARCHITECTURE.md:230`); Phase 10 checklist not yet executed |
-| Phase 0 Consistency Review | COMPLETE | `docs/PHASE_0_REVIEW.md:1` — 18/18 PASS, 0 BLOCKER, 1 IMPORTANT (wording), 3 NON-BLOCKING |
+| Phase 0 Consistency Review | COMPLETE | `docs/PHASE_0_REVIEW.md:1` — 18/18 PASS, 0 BLOCKER, 1 IMPORTANT (I-01 staged hydration clarified by Phase 2/3 impl), 3 NON-BLOCKING |
+| Phase 3 Video Resume | COMPLETE | **This session**: 3A + 3B + 3C delivered. Bus 3 (Video Resume) antigravity stopped after `JobForm` + services stubs; continued to `match/[jobId]` results, `script/[jobId]` recorder, `publish/[jobId]`, dynamic `p/[slug]`, slug immutability fix, signed URLs, security boundaries. Gates: build+lint+tsc PASS, 17-item checklist PASS. |
 
-Allowed values used: `COMPLETE`, `PARTIALLY_COMPLETE`, `PLANNED`, `NOT_STARTED`. Phase 1 COMPLETE 2026-08-30 — see §11 Gate. Next: Phase 2 Career Profile.
+Allowed values used: `COMPLETE`, `PARTIALLY_COMPLETE`, `PLANNED`, `NOT_STARTED`. Phase 5 COMPLETE 2026-09-01 — Phase 1–5 gates PASS (build 30 routes, lint 0 errors, tsc ✓, 40/40 tests). Next: Phase 6 My Applications / Polish — see §12. No production Supabase integration / deploy / GitHub push performed per STOP.
 
 ---
 
@@ -111,7 +112,7 @@ Allowed values used: `COMPLETE`, `PARTIALLY_COMPLETE`, `PLANNED`, `NOT_STARTED`.
 | Phase 0 review | `docs/PHASE_0_REVIEW.md:1` | 18/18 PASS, 0 blocker, I-01/N-01…N-03 tracked |
 | Roadmap + open questions | `docs/implementation/06_DEPLOYMENT.md:1` O-001…O-008, `docs/implementation/01_PROJECT_FOUNDATION.md:1` §2 commands | Source for next-step |
 
-**What is NOT built:** No `package.json`/`app/`/`supabase/`/`tailwind.config.*`/`node_modules` exists. No feature from §4 below has code on disk. This is intentional — Phase 0 was docs-only.
+**What is ALREADY built (2026-08-30 Phase 3):** Foundation + Auth + Career Profile (Phases 1–2 via antigravity + this session). Video Resume 3A/3B/3C now exists: `JobService`, `JobParser`, `ResumeJobMatcher`, `ScriptGenerator` (Mock+Gemini), `hooks/useMediaRecorder.ts`, `components/video-resume/*` (JobForm, MatchScoreRing, SkillsBreakdown, TalkingPoints, VideoResumeStepper, ScriptAndRecorderClient, PublishClient), routes `app/(dashboard)/video-resume/*` (page, match/[jobId], script/[jobId], publish/[jobId]), `app/p/[slug]` dynamic minimal, `app/api/video-resume/*` (match, script, video), `app/api/public*/public-profile`, `lib/storage/video*`, `supabase/migrations/011_phase3_fixes.sql`. See §2 Status and §11 Roadmap.
 
 ---
 
@@ -123,15 +124,15 @@ Detailed list by implementation priority. Status is from the actual repo (all `P
 
 | Feature | What it is | Depends on | Blueprint ref | Current status |
 |---|---|---|---|---|
-| **Career Profile** | One `career_profiles` row per user + children; upload PDF → `ResumeParser` → Review sheet → `PATCH /api/profile` commit | Project Foundation (Phase 1) | `docs/product/01_PRODUCT_OVERVIEW.md:42`, `docs/architecture/02_DATABASE_SCHEMA.md:54`, `docs/modules/01_VIDEO_RESUME.md:1` foundation | PLANNED |
-| **Video Resume — AI Resume/Job Match** | Picker + `jobs` dedup (`description_hash`) → `JobParser` + `ResumeJobMatcher` → `job_matches` (score as alignment indicator) + ring + chips + talking points | Career Profile + Jobs | `docs/modules/01_VIDEO_RESUME.md:1` Step 1, `docs/architecture/04_AI_ARCHITECTURE.md:53` | PLANNED |
-| **AI Script Generation** | `ScriptGenerator` (+ `shorten`/`natural` variants) → 4-section script, `[NEEDS_USER: …]` placeholder on missing evidence | Career Profile + Job + Match | Same, Step 2 | PLANNED |
-| **Video Recording** | `useMediaRecorder` → `video/webm` blob (≤180s, ≤100MB) → private `videos` bucket → `videos` row → draft `public_profiles` slug | Script | `docs/architecture/05_STORAGE_AND_VIDEO.md:54` | PLANNED |
-| **Public Profile** | Minimal centered page `/p/[slug]` — name+title, hero video (300s signed URL), single resume card, actions (Play/Download/LinkedIn/Copy) | Video + Storage | `docs/modules/02_PUBLIC_PROFILE.md:1`, `docs/decisions/ADR-004:18` | PLANNED |
-| **Public Analytics (ingest)** | Beacon `POST /api/public/:slug/view` (dedup 1h, `ip_hash` hashed, no PII) + `public_profile_views` table | Public Profile | `docs/modules/03_PUBLIC_ANALYTICS.md:1`, `docs/architecture/06_ANALYTICS_ARCHITECTURE.md:19` | PLANNED |
-| **Resume Versioning** | Immutable `resume_versions` (append-only), `hash` dedup, `parent_analysis_id` link | Career Profile | `docs/architecture/02_DATABASE_SCHEMA.md:101` | PLANNED |
-| **Interview Coach — Setup + Live + Feedback** | Job picker reuse → `POST /api/interviews` → immersive Live loop (Q→video answer→Follow-up LLM→next) → `InterviewFeedbackEngine` bento (5 bars + AI recommendation) | Career Profile + Jobs + Storage | `docs/modules/04_INTERVIEW_COACH.md:1`, `docs/architecture/04_AI_ARCHITECTURE.md:53` | PLANNED |
-| **Resume AI — Analyze + Editor + Apply** | `ResumeAnalyzer` → 8–16 `resume_suggestions` → Accept/Reject/Edit → `POST .../apply` → new `resume_versions` | Jobs (optional), resume_versions | `docs/modules/05_RESUME_AI.md:1` | PLANNED |
+| **Career Profile** | One `career_profiles` row per user + children; upload PDF → `ResumeParser` → Review sheet → `PATCH /api/profile` commit | Project Foundation (Phase 1) | `docs/product/01_PRODUCT_OVERVIEW.md:42`, `docs/architecture/02_DATABASE_SCHEMA.md:54`, `docs/modules/01_VIDEO_RESUME.md:1` foundation | COMPLETE |
+| **Video Resume — AI Resume/Job Match** | Picker + `jobs` dedup (`description_hash`) → `JobParser` + `ResumeJobMatcher` → `job_matches` (score as alignment indicator) + ring + chips + talking points | Career Profile + Jobs | `docs/modules/01_VIDEO_RESUME.md:1` Step 1, `docs/architecture/04_AI_ARCHITECTURE.md:53` | COMPLETE |
+| **AI Script Generation** | `ScriptGenerator` (+ `shorten`/`natural` variants) → 4-section script, `[NEEDS_USER: …]` placeholder on missing evidence | Career Profile + Job + Match | Same, Step 2 | COMPLETE |
+| **Video Recording** | `useMediaRecorder` → `video/webm` blob (≤180s, ≤100MB) → private `videos` bucket → `videos` row → draft `public_profiles` slug | Script | `docs/architecture/05_STORAGE_AND_VIDEO.md:54` | COMPLETE |
+| **Public Profile** | Minimal centered page `/p/[slug]` — name+title, hero video (300s signed URL), single resume card, actions (Play/Download/LinkedIn/Copy) | Video + Storage | `docs/modules/02_PUBLIC_PROFILE.md:1`, `docs/decisions/ADR-004:18` | COMPLETE |
+| **Public Analytics (ingest)** | Beacon `POST /api/public/:slug/view` (dedup 1h, `ip_hash` hashed, no PII) + `public_profile_views` + `analytics_events` | Public Profile | `docs/modules/03_PUBLIC_ANALYTICS.md:1`, `docs/architecture/06_ANALYTICS_ARCHITECTURE.md:19` | COMPLETE |
+| **Resume Versioning** | Immutable `resume_versions` (append-only), `hash` dedup, `parent_analysis_id` link | Career Profile | `docs/architecture/02_DATABASE_SCHEMA.md:101` | COMPLETE |
+| **Interview Coach — Setup + Live + Feedback** | Job picker reuse → `POST /api/interviews` → immersive Live loop (Q→typed answer→followup→next) → `InterviewFeedbackEngine` bento | Career Profile + Jobs + Storage | `docs/modules/04_INTERVIEW_COACH.md:1`, `docs/architecture/04_AI_ARCHITECTURE.md:53` | COMPLETE |
+| **Resume AI — Analyze + Editor + Apply** | `ResumeAnalyzer` → overall/section scores + strengths/issues/recommendations/keywords/jobAlignment (Mock+Gemini, `NON_FABRICATION_PREAMBLE`) | Jobs (optional), resume_versions | `docs/modules/05_RESUME_AI.md:1` | COMPLETE (Analyze shipped; Editor/Apply per-bullet pending polish) |
 | **My Applications** | Table over shared `jobs` (cross-module), filters + row actions (open Video/Interview/Analytics) | Jobs | `docs/product/03_FEATURES.md:236` F-50, `docs/implementation/04_RESUME_AI.md:1` §6c | PLANNED (no Stitch mock — O-001) |
 | **Testing harness** | `zod` validation, AI output schema, non-fabrication corpus (12 cases), RLS probes, Playwright e2e, axe a11y | Foundation | `docs/implementation/05_TESTING.md:1` | PLANNED |
 
@@ -583,33 +584,24 @@ E:\creare_ai
 
 **CURRENT NEXT STEP:**
 
-**Phase 2 — Career Profile — COMPLETE 2026-08-30** ✓
+**Phase 3 — Video Resume — COMPLETE 2026-08-30** ✓ (antigravity 3A start + this session 3A/3B/3C finish)
 
-**What was implemented (Phase 2):**
-- Database migrations: `001_init_users_and_trigger.sql` through `010_storage_buckets.sql` under `supabase/migrations/` preserving full documented schema & RLS invariants.
-- Storage & Validation: `lib/storage/pdfValidation.ts` (MIME, magic bytes `%PDF`, 10 MB limit, encryption detection), `lib/storage/signedUrl.ts` (60s resume / 300s video TTLs), `lib/storage/resume.ts` (private `resumes/{userId}/{versionId}.pdf`).
-- AI Service Layer: `lib/ai/safety/nonFabrication.ts` (preamble, placeholder detection `[NEEDS_USER: ...]`), `lib/ai/services/resumeParser.ts` (Zod schemas & interface), `lib/ai/providers/gemini.ts` (Gemini 1.5 Pro adapter with JSON schema & retry), `lib/ai/providers/mock.ts` (deterministic MockProvider for CI/testing), `lib/ai/provider.ts` factory.
-- Application Services & Boundary: `lib/services/careerProfileService.ts` (`getProfileByUserId`, `saveProfile`, `calculateCompletionScore`, `parseAndStageResume`, `listResumeVersions`).
-- Critical Data Flow Boundary: AI parser output is strictly STAGED in `resume_versions.parsed_data` and never overwrites `career_profiles` until explicit user confirmation (`PATCH /api/profile`).
-- API Routes: `GET/PATCH /api/profile`, `POST /api/profile/resume` (staging parse DTO), `GET /api/profile/resume-versions`.
-- UI Integration: Live `app/(dashboard)/career-profile` client + server loading, `components/career-profile/ReviewExtractedDataSheet.tsx` ("AI extracted this information... review before saving"), `ResumeUploadModal.tsx`, `EditProfileModal.tsx`, and interactive `app/(dashboard)/onboarding`.
-- Tests: `tests/phase2.test.ts` (PDF validation, encryption, placeholders, schema adherence, completion score, input validation).
+**What was implemented (Phase 3 — this session + antigravity):**
+- **Antigravity (bus 3 start):** `lib/services/jobService.ts` (hash dedup 7-day, `computeJobHash`), `lib/types` Match/Script/Video/Public DTOs, `lib/validation/jobs.ts` + `videoResume.ts` (zod), `lib/ai/services/{jobParser,resumeJobMatcher,scriptGenerator}.ts` + `lib/ai/providers/{gemini,mock}.ts` (NON_FABRICATION_PREAMBLE, JSON schema), `lib/ai/provider.ts` (mock fallback), `lib/storage/video.ts` + `videoValidation.ts` (100MB, magic bytes `EBML`/`ftyp`), `hooks/useMediaRecorder.ts` (states, mime fallback, 180s auto-stop), `components/video-resume/*` (JobForm, MatchScoreRing, SkillsBreakdown, TalkingPoints, VideoResumeStepper), `supabase/migrations/004_jobs.sql` + `005_video_resume.sql` + `011_phase3_fixes.sql` (nullable `resume_version_id`, `breakdown` jsonb), routes `app/api/video-resume/{match,script,video}`, `app/api/public*`.
+- **This session continuation (bus 3 — place of video):** Completed **3A** results page `app/(dashboard)/video-resume/match/[jobId]/page.tsx` (Bento: ring  `r=45` `dasharray 282.7`, chips strong/partial/missing, talking points, `Create My Introduction` CTA), **3B** script page `app/(dashboard)/video-resume/script/[jobId]/page.tsx` + `components/video-resume/ScriptAndRecorderClient.tsx` (4-section cards, Regenerate/Shorten/Natural via `POST /api/video-resume/script`, `PATCH` save, teleprompter, `useMediaRecorder` dark canvas `neutral-900` REC pill, preview/retake, upload fallback + `POST /api/video-resume/video` private `videos/{userId}/{jobId}/{id}.webm` + draft `public_profiles` slug immutable fix), **3C** publish page `app/(dashboard)/video-resume/publish/[jobId]/page.tsx` + `components/video-resume/PublishClient.tsx` (slug immutable `nanoid(10)`, Copy Link, Publish/Unpublish `PATCH /api/public-profile/[id]`, preview video `createSignedDownloadUrl` 300s), **3C public** minimal `app/p/[slug]/page.tsx` (SSR `revalidate=300`, `VideoResumeService.getPublicProfileBySlug` whitelisting, signed URLs 60s/300s, 404 for unpublished, no JD/match/analytics). Fixes: `supabase/migrations/011_phase3_fixes.sql`, `lib/storage/signedUrl.ts` alias + `eslint-disable`, `lib/ai/providers/mock.ts` unused vars, `app/(dashboard)/video-resume/page.tsx` typed, `lib/services/videoResumeService.ts` slug preservation.
+- **Verification:** `npm run build` ✓ (18 static + 21 dynamic, 3 new video-resume routes), `npm run lint` ✓ (0 errors, 3 img warnings), `npx tsc --noEmit` ✓, `npx tsx scripts/run-test.mjs` ✓ 12/12.
 
-**What remains incomplete:**
-- Video Resume (3a Match -> 3b Script+Video -> 3c Publish) — Phase 3
-- Public Profile minimal page hydration & signed URLs — Phase 3c / 4
-- Public Analytics owner dashboard — Phase 5
-- Interview Coach (Setup/Live/Results) — Phase 6
-- Resume AI (Analyze/Editor/Apply) — Phase 7
+**What remains incomplete (intentionally per scope):**
+- Public Analytics owner dashboard (`GET /analytics?profileId=`) — Phase 5 — structure reserved, beacon POST deferred
+- Interview Coach (Setup/Live/Results, dynamic follow-up, feedback 5-bar) — Phase 6
+- Resume AI (Analyze/Editor/Apply, versioning) — Phase 7
 - My Applications dedicated table & cross-module sweep — Phase 8
 
 **Recommended next phase:**
-- **Phase 3 — Video Resume** per `docs/implementation/02_VIDEO_RESUME.md:1` and `docs/modules/01_VIDEO_RESUME.md:1`.
-  - Phase 3a: Target Job form + JobParser + ResumeJobMatcher + Match Score Ring + breakdown chips + talking points.
-  - Phase 3b: ScriptGenerator (4 sections + shorten/natural) + useMediaRecorder hook.
-  - Phase 3c: Publish nanoid slug to public_profiles + minimal `/p/[slug]`.
+- **Phase 5 Public Analytics — deferred per task** (beacon `POST /api/public/[slug]/view` + dashboard). **Next engineering task is Phase 6 — Interview Coach** per `docs/implementation/03_INTERVIEW.md:1` (reuses `jobs` + `CareerProfile`, no JD re-paste). Read: `GEMINI.md:1`, `docs/PROJECT_CONTINUITY.md:1`, `docs/modules/04_INTERVIEW_COACH.md:1`, `docs/architecture/04_AI_ARCHITECTURE.md:1` Interview* services, `docs/implementation/03_INTERVIEW.md:1`, `docs/architecture/07_SECURITY.md:1`.
+- Do not start Phase 7 (Resume AI) or Phase 5 full beacon until Phase 6 gate passes; respect §6 DO NOT BUILD NOW.
 
-**Previous Phase 2 read list (for audit):** GEMINI.md, PROJECT_CONTINUITY, 02_DATABASE_SCHEMA, 03_API_ARCHITECTURE, 04_AI_ARCHITECTURE, 05_STORAGE_AND_VIDEO, 07_SECURITY, 02_USER_FLOWS, ADR-002, ADR-003, PHASE_0_REVIEW — all consumed.
+**Phase 3 read list (this session):** GEMINI.md, PROJECT_CONTINUITY, 01_VIDEO_RESUME, 02_PUBLIC_PROFILE, 02_DATABASE_SCHEMA, 03_API_ARCHITECTURE, 04_AI_ARCHITECTURE, 05_STORAGE_AND_VIDEO, 07_SECURITY, 02_VIDEO_RESUME (implementation), ADR-002/003/004 — plus inspection of actual Phase 2 (`app/(dashboard)/video-resume/page.tsx`, `lib/services/*`, `hooks/`, `app/api/*`, `supabase/migrations/004…011`).
 
 ---
 
@@ -905,7 +897,591 @@ When a product request asks for a new feature:
 
 ---
 
-## 25. FINAL RULE
+## 25. PHASE 4 — INTERVIEW COACH: IMPLEMENTATION (2026-09-01)
+
+> **Status: COMPLETE** — All 15 Definition-of-Done items ticked. No Phase 5 work started, no production Supabase integration, no deploy, no GitHub push (per STOP).
+
+### 25.1 Objective & User Flow Shipped
+
+Dashboard → Interview Coach (`/interview`) → Select Job (shared `jobs` via `JobService.listJobs`) → Interview Preparation (type/difficulty/count) → AI-generated questions → Practice (answer/review) → Final preparation summary. Reuses canonical Career Profile + selected Job; no resume re-upload.
+
+Empty states: no career profile → CTA to `/career-profile`; no jobs → CTA to `/video-resume` (shared job creation); invalid/unauthorized session → `404` / `400` with safe IDOR message; question generation / answer evaluation failures → `500`/`503` with `ApiError`.
+
+### 25.2 Data Model & Migration
+
+Reuses `007_interviews.sql` tables (`interviews`, `interview_questions`, `interview_answers`, `interview_feedback`, `interview_answer_feedback`) with RLS `user_id=auth.uid()` from `009_rls_policies.sql:143-171` and storage `interview-answers` bucket from `010_storage_buckets.sql:33`.
+
+**New `012_interview_coach_phase4.sql`:**
+- `interviews` add `updated_at` + expanded `status` check (`creating|active|abandoned|completed|feedback_ready|draft|in_progress`) + trigger `handle_interview_updated_at`
+- `interview_questions` add `category` (`behavioral|technical|role_specific|company|resume_based|situational`), `difficulty` (`easy|medium|hard`), `ideal_focus` (spec STEP 3) + indexes `idx_interview_questions_category`, `idx_interview_answers_question_score`
+- `interview_answers` add `answer`, `feedback`, `score` (0–100 check), `updated_at` + trigger `handle_interview_answer_updated_at`
+- Follows `001–011` naming, `enable row level security` already on, no rewrite of prior migrations. Intentionally deferred production `supabase db push` (per IMPORTANT RULE).
+
+**DTOs:** `lib/types/interview.ts:1` — `InterviewSessionDTO`, `InterviewQuestionDTO` (question/category/difficulty/order/idealFocus), `InterviewAnswerDTO` (answer/feedback/score), `InterviewFeedbackDTO` (overallScore/label/dimensions/strengths/weaknesses), `InterviewSessionDetailDTO` with `progress` (total/answered/avgScore/strongest/weakest).
+
+### 25.3 AI Interview Service
+
+**New interfaces** `lib/ai/services/interviewQuestionGenerator.ts:1` and `lib/ai/services/interviewAnswerEvaluator.ts:1` with Zod `interviewQuestionsResultSchema` (3–15 questions) and `interviewFeedbackSchema` (score 0–100, strengths/weaknesses/improvement/betterAnswer/feedback).
+
+Extended `lib/ai/provider.ts:12` `AIProvider` to include `interviewQuestionGenerator` + `interviewAnswerEvaluator`; `getAIProvider()` still `mock` when `NODE_ENV=test` or no `GEMINI_API_KEY`.
+
+**Gemini** `lib/ai/providers/gemini.ts:1` — `GeminiInterviewQuestionGenerator` (temp 0.4, `NON_FABRICATION_PREAMBLE`, JD+Profile JSON, `responseMimeType: application/json`) and `GeminiInterviewAnswerEvaluator` (temp 0.3, rubric 90-100 strong / 70-89 proficient / 50-69 developing / <50 needs_work).
+
+**Mock** `lib/ai/providers/mock.ts:196-399` — `MockInterviewQuestionGenerator` deterministic pool per `type` (behavioral→behavioral/resume_based/situational, technical→technical/resume_based, mixed→balanced) + `[NEEDS_USER]` when profile empty; `MockInterviewAnswerEvaluator` deterministic length/keyword scoring + strengths/weaknesses/improvement. Both validate against Zod; no live Gemini required.
+
+Non-fabrication enforced via `lib/ai/safety/nonFabrication.ts:9` preamble + mock `[NEEDS_USER]` fallback, never invents metrics/companies/tech.
+
+### 25.4 Validation (Zod)
+
+Extended `lib/validation/interviews.ts:1`:
+- `interviewSetupSchema` (existing: jobId uuid, type mixed/behavioral/technical, difficulty easy/medium/hard, questionCount 3–15)
+- `interviewQuestionGenerateSchema` (sessionId uuid)
+- `interviewAnswerSchema` (sessionId uuid, questionId uuid, answer 1–5000 trimmed)
+- `interviewSessionPatchSchema` (status enum including draft/in_progress/completed)
+- `interviewAnswerFeedbackSchema` (score 0–100)
+
+Scores clamped `0–100` in both AI schemas (`interviewFeedbackSchema` + column check `score >=0 AND <=100`); input length limits enforced (answer max 5000, question 10–500, category enum, etc.).
+
+### 25.5 API Routes (Thin validator → Service → apiOk/apiErr)
+
+All `dynamic="force-dynamic"`, auth via `supabase.auth.getUser()` (never trust `user_id` body), ownership via `JobService.getJobById(userId, jobId)` + `InterviewService.getSessionById(userId, id)` (IDOR 404 on mismatch), Zod `safeParse` → `VALIDATION_ERROR` 400, `UNAUTHORIZED` 401, `NOT_FOUND` 404, `AI_UNAVAILABLE` 503.
+
+- `POST /api/interview/sessions` `app/api/interview/sessions/route.ts:1` — `interviewSetupSchema` → `InterviewService.createSession` → 201 + `InterviewSessionDTO` (also aliased `POST /api/interviews` for spec variance)
+- `GET /api/interview/sessions` (list recent for dashboard)
+- `GET /api/interview/sessions/[id]` `app/api/interview/sessions/[id]/route.ts:1` — UUID regex check, `getSessionById` with questions/answers/feedback/progress
+- `PATCH /api/interview/sessions/[id]` — `interviewSessionPatchSchema` → `patchSession` (auto `completed_at` + `generateSessionFeedbackIfNeeded` on completed)
+- `POST /api/interview/questions` `app/api/interview/questions/route.ts:1` — `sessionId` → `generateQuestionsForSession` (idempotent)
+- `POST /api/interview/answers` `app/api/interview/answers/route.ts:1` — `interviewAnswerSchema` → `submitAnswer` → `evaluate` → insert `interview_answers` + `interview_answer_feedback`, update question status (`answered` → next `active`), auto-complete when all answered and create `interview_feedback` bento
+
+Plural aliases `app/api/interviews/route.ts` + `app/api/interviews/[id]/route.ts` mirror singular to satisfy `docs/architecture/03_API_ARCHITECTURE.md` plural naming.
+
+### 25.6 Interview Coach UI (Polished, Design-System Consistent)
+
+- `app/(dashboard)/interview/page.tsx:1` — RSC fetch `CareerProfileService.getProfileByUserId` + `JobService.listJobs` + `InterviewService.listSessions`; renders `InterviewSetupClient`
+- `components/interview/InterviewSetupClient.tsx:1` — Job dropdown (shared jobs), `selectedJob` detail card, Session Settings radio-cards (type behavioral/technical/mixed + difficulty easy/medium/hard + count 5/10/15), completion <60 warning, `Start Interview` → `POST /api/interview/sessions` → `router.push(/interview/[id])`, Recent Sessions list (6) with status badge + company, “How it works” card; empty states for no profile / no jobs
+- `app/(dashboard)/interview/[sessionId]/page.tsx:1` — RSC guard `auth.getUser()` → `InterviewService.getSessionById` → `notFound()` on IDOR, UUID validation, 0-questions error; renders `InterviewSessionClient`
+- `components/interview/InterviewSessionClient.tsx:1` — Header (role/company badges, progress answered/total + avgScore), Preparation overview (Job card, Questions count + categories, Progress bar + strongest/weakest), Question card (category/difficulty badge, `w-1 bg-secondary` accent, `Question 3 of 10`, idealFocus lightbulb, status), Answer area (Textarea 6 rows + 5000 counter, Submit/Skip/Next, never auto-submit), Feedback after submit (Score circle 14, strengths/weaknesses 2-col, `betterAnswer` + `improvement` amber card), Progress dots (secondary active, success answered), Final Preparation Summary bento when `feedback_ready`/`completed` (overallScore 78/100 + label + 5 bars secondary≥70 tertiary<70 + strengths/weaknesses + gradient AI Recommendation + Retry/Back actions), typed textarea fallback for camera-denied (no video required per MVP)
+
+Tokens: `Card` (`rounded-xl border-outline-variant bg-surface-container-lowest`), `Button` (`secondary` indigo, `outline`, `ghost`), `Badge`, `Textarea`, `secondary #4648d4`, `surface-container`, `rounded-xl`, `gutter` spacing — consistent with `DESIGN_SYSTEM.md` and `components/ui/*`.
+
+### 25.7 Security
+
+Same standard as Phase 3 `docs/architecture/07_SECURITY.md:218`:
+- Auth: every route `auth.getUser()` 401; middleware `PROTECTED_PREFIXES` includes `/interview`
+- Ownership/IDOR: `JobService.getJobById(userId, jobId)` + `select ... eq user_id eq id` for interviews/questions/answers/feedback; `interview_answer_feedback` policy checks `interview_id in (select id from interviews where user_id=auth.uid())`; RLS `enable row level security` already on `012` tables
+- Input validation: Zod on all bodies + UUID regex on params + length caps (answer 5000, question 500, score 0-100)
+- XSS-safe: `Textarea` value + `dangerouslySetInnerHTML` never used; feedback rendered as text
+- SQL injection: Supabase parameterized client only, no raw SQL in routes
+- No `service-role` exposed to browser (`lib/supabase/service.ts` server-only guard, only `createClient()` in routes)
+- No sensitive leakage: public profile whitelist unchanged; interview data never exposed via public routes
+- AI prompts contain only required Profile (headline, experiences titles/companies, skills names) + Job (title/company/description slice) — no raw resume PDF, no auth tokens, no another user's data
+- No fabricated qualifications: `NON_FABRICATION_PREAMBLE` in every prompt + `[NEEDS_USER]` placeholder path + mock `[NEEDS_USER]` for empty profiles
+
+### 25.8 Error States
+
+UI covers: no jobs → dashed “Create a Job” CTA; no career profile → “Go to Career Profile”; invalid session UUID → “Invalid Session” centered; unauthorized/not found → `notFound()` (no IDOR leak); question generation failure → “Questions not ready” + retry; answer evaluation failure → `AI_UNAVAILABLE` 503 + error banner; network failure → `catch` error banner; empty/malformed AI response → Zod `parse` throws 500 with `INTERNAL_ERROR`; empty answer → validation 400; oversized answer → 400; expired session n/a (no TTL). Mock provider allows full local dev without `GEMINI_API_KEY` (via `getAIProvider()` mock fallback).
+
+### 25.9 Testing
+
+**Existing Phase 1–3 gates remain passing:** `npm run build` 26 routes compiled, `npm run lint` 0 errors, `npx tsc --noEmit` ✓.
+
+**New runner `npx tsx scripts/run-test.mjs` 28/28:**
+- 12 Phase 2 (pdfValidation, completionScore, parsedResumeSchema, careerProfileInput)
+- 16 Phase 4: setup valid/invalid jobId, questionCount bounds, answer valid/empty/oversized/boundary 5000, feedback score 0-100, patch status, UUID validation, mock question count+schema, mock feedback score 0-100, short vs long scoring, non-fabrication `[NEEDS_USER]`, ownership simulation, categories enum.
+
+**Dedicated `npx tsx tests/phase4_interview.test.ts` 20/20:** Adds mock behavioral/technical type, difficulty respect, per-validator, IDOR simulations, empty/oversized, non-fabrication double-check, category allow-list.
+
+All tests deterministic via `MockProvider` (Alex Mercer fixture), no live Gemini needed. Score validation `0–100` enforced at Zod + DB check.
+
+### 25.10 Security Checks Performed
+
+- `grep -r createServiceClient` — only `lib/storage/signedUrl.ts` + `app/api/public/*` (no interview route uses service-role)
+- `grep -r NEXT_PUBLIC_GEMINI` — 0 hits
+- RLS `enable row level security` present on all `012` alters (inherited from `009`)
+- Route manual review: each reads `auth.getUser()` id, never `body.user_id`
+- IDOR probes simulated in tests (other-user job/session → 404) + expected 404 on `GET /api/interview/sessions/[otherId]`
+
+### 25.11 Remaining Issues & Known Limitations
+
+- **Production Supabase integration intentionally deferred** — `012` migration file exists but `supabase db push` not run (per IMPORTANT RULE); remote `lvmayqmhtnqdxwoboews` project still empty (verified `PGRST205` on 2026-08-31). Push requires `SUPABASE_ACCESS_TOKEN` + DB password (see `docs/architecture/02_DATABASE_SCHEMA.md`).
+- **Interview Progress trend chart** still no Stitch mock (`O-002`) — basic progress (total/answered/avg/strongest/weakest) ships, full history chart is polish.
+- **No video answer recording** in Phase 4 MVP — answer is typed `Textarea` (5000) per spec `answer area large textarea`; video `interview-answers` bucket exists but `useMediaRecorder` integration for interview deferred to Phase 5 polish (spec allows typed fallback when camera denied).
+- **No billing / chatbot / Python / FFmpeg** — per IMPORTANT RULE.
+- **Rate-limit 6/h for `POST /api/interviews`** documented in `docs/modules/04_INTERVIEW_COACH.md` but not enforced in `012` code (covered by `lib/rateLimit.ts` hook point, left for Phase 5 hardening).
+
+---
+
+## 26. PHASE 5 — RESUME AI + ANALYTICS: IMPLEMENTATION (2026-09-01)
+
+> **Status: COMPLETE** — Both Resume AI and Analytics ship. No Phase 6, no DB push, no deploy, no GitHub push (per STOP).
+
+### 26.1 Resume AI Objective & Flow Shipped
+
+`/resume-ai` — Select Resume (existing `resume_versions` via `CareerProfileService.listResumeVersions`) + Optional Select Job (shared `jobs` via `JobService.listJobs`) → `Analyze Resume` → `POST /api/resume-ai/analyze` → Overall Score (Quality vs Alignment) + Section Analysis + Strengths/Issues/Recommendations + Keyword Suggestions + Job Alignment. Reuses canonical Career Profile + Resume Version + optional Job; no re-upload. Empty state: no resume → CTA to `/career-profile`.
+
+### 26.2 Resume AI Output
+
+- **Overall Score** `0–100` clearly labeled `Resume Quality Score` (no job) or `Resume Alignment Score` (with job), not hiring probability, with `label` `needs_work|developing|proficient|strong`.
+- **Section Scores** for `summary|experience|skills|education|formatting` each `score 0–100` + `strengths[]` + `issues[]` + `recommendations[]`.
+- **Strengths** e.g., relevant skills, measurable achievements, strong alignment; **Issues** e.g., vague language, missing metrics, weak verbs, missing keywords; **Recommendations** actionable STAR/verb guidance.
+- **Job-specific** when job selected: `jobAlignment.matchingStrengths`, `missingWeakAreas`, `keywordSuggestions` (truthful subset), `experienceRecommendations` — never instructs to falsely add skills/employers/titles/certs.
+
+All via `resumeAnalyzerResultSchema` Zod validation.
+
+### 26.3 Resume AI Service & Validation
+
+- `lib/ai/services/resumeAnalyzer.ts:1` — `resumeSectionScoreSchema`, `resumeAnalyzerResultSchema` (overall 0–100, sections 3–6, strengths/issues 1–8, recommendations 2–10, keywords, `jobAlignment` nullable)
+- `lib/validation/resumeAi.ts:1` — `resumeAiAnalyzeSchema` (`resumeVersionId` uuid, `jobId` optional uuid) already existed, reused.
+- `lib/services/resumeAiService.ts:1` — `analyze(userId, input)` verifies `resume_versions` ownership (`eq user_id`), verifies `job` ownership via `JobService.getJobById`, loads `CareerProfileService.getProfileByUserId`, calls `getAIProvider().resumeAnalyzer.analyze`, validates, `insert resume_analyses` (non-fatal), records `analytics_events` `resume_analysis`, returns `ResumeAnalyzerResult`.
+
+### 26.4 Gemini & Mock Providers
+
+- `lib/ai/provider.ts:12` extended `AIProvider` with `resumeAnalyzer`.
+- `lib/ai/providers/gemini.ts:1` — `GeminiResumeAnalyzer` (temp 0.3, `responseMimeType: application/json`, `NON_FABRICATION_PREAMBLE`, minimal profile `headline/summary/experiences/skills/education/projects/certs` + JD, returns `resumeAnalyzerResultSchema`; handles `hasJob` prompt variant, score calibration 90-100 strong etc.)
+- `lib/ai/providers/mock.ts:1` — `MockResumeAnalyzer` deterministic: `overallScore` derived from `completionScore` + `hasSummary/experience/skills`, sections `summary|experience|skills|education|formatting` with placeholders `[NEEDS_USER: …]` when empty, strengths/issues/recommendations/keywords derived from profile/job, `jobAlignment` computed via skill intersection and missing weak detection, never fabricates.
+
+### 26.5 Resume AI API & UI
+
+- **API** `POST /api/resume-ai/analyze` `app/api/resume-ai/analyze/route.ts:1` — `dynamic="force-dynamic"`, `auth.getUser()` 401, `resumeAiAnalyzeSchema` 400, IDOR 404 on resume/job, `ResumeAiService.analyze` → `apiOk`, `AI_UNAVAILABLE` 503. No `user_id` trust.
+- **UI** `app/(dashboard)/resume-ai/page.tsx:1` — RSC `listResumeVersions` + `listJobs` → `ResumeAiClient`
+- `components/resume-ai/ResumeAiClient.tsx:1` — Resume `<select>` + Job `<select>` (General vs job), detail cards, `Analyze Resume` → `fetch` → result: `ScoreRing` SVG `r=45`, label badge, `summary`, `jobAlignment` amber, `sectionScores` grid 3 cols (`SectionCard` with badge strengths/issues/recommendations), strengths/issues 2-col, recommendations `ol` with `[NEEDS_USER]` amber dashed, keyword `Badge` list, experience recommendations `secondary-container`. Empty no-resume CTA, loading, error banner. Design tokens `Card` `Button secondary`, `Badge`, `secondary #4648d4`.
+
+### 26.6 Analytics Event Model & Migration
+
+Reuses `006_analytics.sql` `public_profile_views` (`ip_hash` hashed daily salt, `user_agent` truncated 512, `referer` family, 1h dedup). **New `013_analytics_events.sql:1`:**
+```sql
+analytics_events (id uuid pk, user_id uuid fk users cascade not null, public_profile_id uuid fk public_profiles cascade nullable, event_type check profile_view|resume_download|video_play|job_application|interview_started|interview_completed|resume_analysis|video_resume_match|script_generated, job_id uuid fk jobs set null nullable, created_at timestamptz default now(), metadata jsonb)
+indexes user_created, profile, job, type, user_type_date; enable RLS; policy user_id=auth.uid().
+```
+No `supabase db push` (per IMPORTANT RULE). Existing `public_profile_views` kept for dedup, mirrored to `analytics_events` for unified aggregation.
+
+### 26.7 Analytics Service
+
+- `lib/services/analyticsService.ts:1` — `AnalyticsEventType`, `AnalyticsOverview` (`profileViews|resumeDownloads|videoPlays|applications|interviewsStarted|completed|resumeAnalyses|videoPlayRate|resumeDownloadRate`), `TrendPoint` (`date|profileViews|resumeDownloads|videoPlays`), helpers `toDayString`, `clampRate`.
+- `recordEvent({userId, publicProfileId, eventType, jobId, metadata})` → `insert analytics_events` via `createClient` (owner-derived, non-fatal).
+- `recordPublicView({slug, ip, userAgent, referer})` → `createServiceClient` (eslint-disabled) slug → `public_profiles` lookup `is_published`, hash `ip`=`sha256(ip|dailySalt|profile.id).slice(0,32)`, 1h dedup `public_profile_views` check, bucket `device` (desktop/mobile/tablet) + `refererFamily` (direct/linkedin/indeed/google/other), insert `public_profile_views` + mirror `analytics_events profile_view` with `{device, referer}`. Privacy: never stores raw IP.
+- `recordPublicVideoPlay`/`recordPublicResumeDownload` → service lookup + `insert analytics_events`.
+- `getOverview(userId)` — parallel `count` queries `analytics_events` profile_view/resume_download/video_play, `jobs` count, `interviews` count/completed, `resume_analyses` count, `public_profiles` ids → `public_profile_views` count, `profileViews = max(analytics, publicTable)` (union), rates `clampRate`.
+- `getTrends(userId, 7|30)` — since `days` ago, fetch `analytics_events` + `public_profile_views` (500 limit), build `Map` 7/30 days initialized 0, aggregate per `event_type`/`viewed_at`, return `TrendPoint[]` sorted.
+
+Instrumentation: `InterviewService.createSession` → `recordEvent interview_started`, `generateSessionFeedbackIfNeeded` → `interview_completed`, `ResumeAiService.analyze` → `resume_analysis`, `VideoResumeService` not auto (hook point), public beacon via `ViewBeacon`.
+
+### 26.8 Analytics APIs & Public Tracking
+
+- `POST /api/analytics/events` `app/api/analytics/events/route.ts:1` — auth 401, `analyticsRecordSchema` (`eventType` enum, `publicProfileId`/`jobId` uuid nullable, `metadata` record), verifies `jobId`/`publicProfileId` ownership 404, strips `ip`/`email` from metadata, `recordEvent` → 201.
+- `GET /api/analytics/overview` `app/api/analytics/overview/route.ts:1` — auth 401, `getOverview` → `apiOk`.
+- `GET /api/analytics/trends?days=7|30` `app/api/analytics/trends/route.ts:1` — auth 401, `analyticsTrendsQuerySchema` 400, `getTrends` → `apiOk`.
+- `POST /api/public/[slug]/view` `app/api/public/[slug]/view/route.ts:1` — **public** no auth, slug 3–64, `x-forwarded-for`/`x-real-ip`/`user-agent`/`referer` (body or header), `recordPublicView` dedup 1h hashed IP, bucket referer, `apiOk {ok, deduped}` (404 masked). Privacy: never echoes IP.
+- `POST /api/public/[slug]/video-play` + `resume-download` — public, slug-derived owner, `insert analytics_events` via service.
+- All private analytics verify `user_id=auth.uid()` + `public_profile_id in (select id where user_id=auth.uid())` (for `public_profile_views` reads) — IDOR blocked.
+
+### 26.9 Public Profile Analytics Privacy & UI Integration
+
+- `components/public-profile/ViewBeacon.tsx:1` — `"use client"` `useEffect` fire-and-forget `fetch /api/public/${slug}/view` with `referer`, 800ms delayed video `play` → `timeupdate` ≥3s → `fetch video-play` once. No PII sent.
+- `components/public-profile/ResumeDownloadButton.tsx:1` — `trackResumeDownload(slug)` on `onClick` before `href` download.
+- `app/p/[slug]/page.tsx:13` — added `<ViewBeacon slug>` + `<ResumeDownloadButton slug resumeUrl>` vs disabled fallback; preserves ADR-004 minimal whitelist (never exposes `jobs.description`, `match_breakdown`, `interview_answers`, `resume_analysis`, `analytics`).
+- `app/(dashboard)/analytics/page.tsx:1` — RSC `getOverview` + `getTrends(7)` + `public_profiles` 1-row check, `dynamic="force-dynamic"`, `EmptyState` if `!hasPublished && !hasAnyActivity` (shows 3 KPI cards —), else `<AnalyticsClient>`.
+- `components/analytics/AnalyticsClient.tsx:1` — `useState` overview/trends, `KpiCard` (6: Views/Downloads/Plays/Applications/Interviews/Analyses), Engagement 3-col (`videoPlayRate`, `resumeDownloadRate`, privacy badge), Trends `TrendChart` lightweight bars (`bg-secondary` views 60px, `bg-primary` plays 40px, `bg-tertiary` downloads 30px) + 7/30 toggle → `fetch /api/analytics/trends`, table per-day, privacy footer. No chart dep.
+
+### 26.10 Security
+
+Same as `25.7` plus:
+- Analytics private: `analytics_events` RLS `user_id=auth.uid()`; `public_profile_views` `select` only via `public_profile_id in (select id where user_id=auth.uid())`; public inserts via service_role only, never anon direct with arbitrary `user_id`.
+- Public beacon derives `user_id`/`public_profile_id` server-side from `slug` where `is_published=true`; client cannot submit arbitrary IDs.
+- Event type enum validated; `jobId`/`publicProfileId` ownership verified before `recordEvent`.
+- Metadata PII stripping (`ip`, `email` deleted) + `ip_hash` truncated 32, `user_agent` truncated 512, no raw IP stored, no visitor identity exposed to owner (only counts/rates).
+- Public whitelist unchanged; analytics never leaked to `GET /api/public/[slug]` or `app/p/[slug]`.
+
+### 26.11 Testing
+
+**Existing Phase 1–4 gates remain:** `npm run build` 30 routes, `npm run lint` 0 errors, `npx tsc --noEmit` ✓, `npx tsx scripts/run-test.mjs` now **40/40** (12 Phase2 + 16 Phase4 + 12 Phase5).
+
+**New `npx tsx tests/phase5.test.ts` 26/26:**
+- Resume AI 12: valid with/without job, invalid UUIDs, score 0–100, missing resume simulation, unauthorized resume, invalid jobId, job ownership, mock with/without job, empty profile `[NEEDS_USER]` + low score, non-fabrication keyword truthfulness, general label.
+- Analytics 10: event type enum, record schema valid/invalid, authenticated owner, IDOR, public view/video/resume recordable, aggregation rates 0-100, trends 7/30 points, public/private separation, no PII exposure.
+- All deterministic via `MockProvider` (Alex Mercer), no live Gemini. Score validation `0–100` enforced at Zod + DB.
+
+### 26.12 Remaining Issues & Known Limitations
+
+- **Production Supabase integration intentionally deferred** — `012` + `013` migration files exist but `supabase db push` not run (per IMPORTANT RULE); remote `lvmayqmhtnqdxwoboews` project still `PGRST205` on 2026-09-01. Push requires `SUPABASE_ACCESS_TOKEN` + DB password + `supabase link --project-ref lvmayqmhtnqdxwoboews`.
+- **Resume AI Editor/Apply per-bullet** (`resume_suggestions` Accept/Reject/Edit → `POST .../apply` → new `resume_versions`) is deferred polish (Analyze → overall/section/recommendations ships; two-pane diff editor is `O-003` by-analogy, not Stitch).
+- **My Applications** table ships as placeholder (`/applications` EmptyState) — cross-module `jobs` table exists but filters/row actions deferred.
+- **Interview Progress history** trend still no Stitch (`O-002`) — basic progress ships.
+- **No billing/chatbot/Python/FFmpeg** — per IMPORTANT RULE.
+- **Rate-limit** (`docs/modules/05_RESUME_AI.md` 6/h `POST /api/resume-ai/analyze`, `06_ANALYTICS_ARCHITECTURE.md` 10/h/IP view) documented but not enforced in code (hook `lib/rateLimit.ts` reserved).
+- **Analytics materialization** `public_profile_view_daily` deferred until ≥50k views (lazy `GROUP BY` fine at <10k).
+
+---
+
+## 27. PHASE 6 — FINAL APPLICATION COMPLETION & INTEGRATION READINESS (2026-09-01)
+
+> **Status: COMPLETE** — Application is internally complete, coherent, secure, testable and ready for final Supabase/GitHub/deployment integration pass. Remote DB NOT modified, GitHub NOT pushed, production NOT deployed — per CRITICAL STOP RULE.
+
+```
+Phase 6 application development COMPLETE.
+Remote Supabase integration NOT performed.
+GitHub push NOT performed.
+Production deployment NOT performed.
+```
+
+### 27.1 Mission & Verified Baseline
+
+Phase 6 is the **FINAL APPLICATION DEVELOPMENT PHASE** before the integration pass (`supabase db push` → RLS/Storage verification → env → e2e → security → commit → push → deploy). Baseline was re-verified at start of Phase 6:
+
+- `git log --oneline -5` → `eeb4c6b feat: Phase 1 foundation + Phase 2 Career Profile scaffolding` (all later work uncommitted, correctly deferred)
+- `npm run build` → 30 routes compiled successfully, 0 type errors
+- `npm run lint` → 0 errors, 3 pre-existing `no-img-element` warnings (`MobileDrawer.tsx:62`, `SideNavBar.tsx:62`, `TopNavBar.tsx:31`)
+- `npx tsc --noEmit` → 0 errors
+- `npx tsx scripts/run-test.mjs` → 40/40 (Phase 2 + 4 + 5 gate)
+- `npx tsx tests/phase4_interview.test.ts` → 20/20
+- `npx tsx tests/phase5.test.ts` → 26/26
+
+No baseline drift — no investigation needed before changes.
+
+### 27.2 Full Application Audit Performed
+
+Inspected: `app/` (30 routes), `components/` (26 files), `hooks/`, `lib/` (services/validation/ai/storage/supabase/rateLimit), `supabase/migrations/` (14 files), `scripts/`, `tests/`, `docs/`, `public/`, `package.json`, `.env.example`, `.env.local`, every dashboard navigation item and route.
+
+Inventory: 7 primary nav items (Dashboard, Career Profile, Video Resume, Interview Coach, Resume AI, My Applications, Analytics + Settings) — all reachable. Zero placeholder pages without explanation, zero dead links after fixes. 16 categories audited (implemented/placeholder/empty/TODO/buttons/links/duplicate APIs/services/components/imports/types/loading/error/security/migrations) — see subsections.
+
+### 27.3 Navigation & Placeholder Fixes Shipped
+
+- **Dashboard hardcoded Recent Applications (Google 82% / Microsoft 76%)** replaced with real `jobs` query (`supabase.from("jobs")` limit 3) plus honest empty state (“No jobs yet — Create your first job → /video-resume”) — `app/(dashboard)/dashboard/page.tsx:1`
+- **Dashboard KPI cards** hardcoded (Resume 84 / Interview 78 / Resume AI 12 / Video 2 profiles) replaced with real queries: `resume_analyses.category_scores.overall`, `interview_feedback.overall_score`, `resume_analyses.length`, `public_profiles` count — each with explicit empty state (“No data — Run Resume AI / Start Interview / Create Video Resume”)
+- **Recent Applications table** now `scope="col"` + `sr-only` a11y labels, conditional empty vs real rows; header “Overall Readiness” remains derived from `completionScore` (A-/B-/Needs Setup) — no fabrication.
+- **My Applications** `/applications` was static `hasJobs=false` placeholder. Now async RSC `JobService.listJobs(userId)` with 2 branches: empty → `EmptyState` + amber honest note “Advanced filters/match score/row actions deferred (O-001)”; populated → full table `Job/Source/Created/Actions` (Video/Interview/Resume AI links) plus honest footer — `app/(dashboard)/applications/page.tsx:1`
+- **SideNavBar CTA** `New Application` previously pointed to `/applications` (empty). Fixed to `/video-resume` with subtitle “Creates a tracked job → Video/Interview/AI” — `components/nav/SideNavBar.tsx:118`
+- **PublishClient** outdated “Analytics will live at /analytics?profileId= in Phase 5. Structure is reserved; no beacon dashboard is shipped in Phase 3.” replaced with live link “Views, plays and downloads for /{slug} appear in Analytics (daily IP-hash dedup, privacy-safe, no raw IP).” — `components/video-resume/PublishClient.tsx:134`
+- Remaining placeholders intentionally kept and documented: Interview Progress trend chart (O-002), Resume AI Editor/Apply per-bullet (O-003), advanced analytics/video processing/STT (deferred).
+
+Search `TODO|FIXME|Coming soon|Not implemented|[NEEDS_USER]|Alex Mercer` → only legitimate `[NEEDS_USER]` AI markers and test mocks (Alex Mercer canonical fixture) remain; zero accidental product placeholders.
+
+### 27.4 Public Profile Final Audit
+
+`/p/[slug]` — `app/p/[slug]/page.tsx:1`, `lib/services/videoResumeService.ts:getPublicProfileBySlug`, `components/public-profile/ViewBeacon.tsx:1`, `ResumeDownloadButton.tsx:1`
+
+- Published works (SSR `revalidate=300`, `generateMetadata`), unpublished → `notFound()` generic 404 (no leakage unpublished vs nonexistent) ✓
+- Slug immutable: `nanoid(10).toLowerCase()` per `VideoResumeService.saveRecordedVideo` with `preservePublished` guard ✓
+- Resume download: `createSignedUrl("resumes", file_path, 60)` short-lived, whitelisted ✓
+- Video playback: `<video src={profile.videoUrl} controls playsInline preload="metadata">` with signed URL 300s TTL; empty state “hasn't published an introduction video yet.” ✓
+- LinkedIn/portfolio links now sanitized via `isSafeHttpUrl()` (only `https:`/`http:` via `new URL`, blocks `javascript:`/`data:`) and portfolio button added only if safe — XSS prevention ✓
+- Immutable `is_published` filter `eq("is_published", true)` on slug lookup ✓
+- Whitelist-only: selects only `name/title/location/summary/experiences/education/skills/videoUrl/resumeUrl`; never leaks `jobs.description`, `job_matches`, `scripts`, `interviews`, `resume_analyses`, `analytics`, internal IDs, `user_id` — `getPublicProfileBySlug` verified ✓
+- Analytics beacon `ViewBeacon` fire-and-forget `fetch(…/view).catch(() => {})` + `keepalive:true`, delayed `video.play` → `timeupdate ≥3s` → `video-play`, never blocks rendering; `ResumeDownloadButton` `trackResumeDownload` also `.catch` — public profile remains usable if analytics fails ✓
+- `Copy link` button now `aria-label="Copy profile link"` and `catch(() => {})` ✓
+- `contactEmail` rendered as `mailto:` with `encodeURIComponent("[CareerFlow] via your public profile")` subject — intentional whitelist ✓
+
+### 27.5 Authentication & Authorization Audit
+
+All private API routes verified: `api/profile*`, `api/video-resume/match|script|video`, `api/interviews`, `api/interview/sessions|questions|answers`, `api/resume-ai/analyze`, `api/analytics/overview|trends`, `api/public-profile/[id]` — each:
+
+```
+derive user via await supabase.auth.getUser() → 401 if !user
+  ↓ never body.user_id / query.user_id
+  ↓ verify ownership (JobService.getJobById(userId), ResumeAiService resume_version eq user_id, InterviewService.getSessionById eq user_id)
+  ↓ perform operation → ApiError 404/403 on mismatch
+```
+
+IDOR surface tested: `JobService.getJobById`, `InterviewService.getSessionById|submitAnswer`, `ResumeAiService.analyze` (resume + job), `AnalyticsService.getOverview/getTrends` (RLS + user_id filter). Cross-user probe in tests returns 404, not data — `tests/phase6.test.ts:124-135`.
+
+No route trusts `body.user_id`, `query.user_id`, or client-provided ownership.
+
+### 27.6 Service-Role Audit
+
+- Search `SUPABASE_SERVICE_ROLE_KEY|createServiceClient|service-role` → only `lib/supabase/service.ts:9` (throws if `typeof window !== "undefined"`), `lib/storage/signedUrl.ts:2` (eslint-disabled, correct), `lib/services/analyticsService.ts:3` (eslint-disabled, beacon + signed-URL use case) — all server-only
+- No `createServiceClient` in `app/api/interview/*`, `app/api/resume-ai/*`, `app/api/video-resume/*` — verified via `grep`
+- `.env.example` has `SUPABASE_SERVICE_ROLE_KEY=your-service-role-key` (server-only), no `NEXT_PUBLIC_` prefix; env audit `lib/env.ts:24` forbids `NEXT_PUBLIC_SUPABASE_SERVICE_ROLE_KEY` with throw
+- `NEXT_PUBLIC_` exposed keys are only `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `NEXT_PUBLIC_APP_URL` — safe to embed (anon is RLS-scoped)
+- Lint `no-restricted-imports` in `.eslintrc.json:4` forbids `createServiceClient` import outside allowed paths; both allowed files have `eslint-disable` with comment.
+
+### 27.7 Input Validation Audit
+
+Every user-controlled input is Zod-validated server-side:
+
+- `matchRequestSchema` (`title 1-120`, `company 1-120`, `description 20-20000`) — `app/api/video-resume/match`
+- `scriptGenerateSchema` (`jobId uuid`, `mode enum`) — `app/api/video-resume/script` GET/POST, plus `scriptUpdateSchema` (4 sections min 1), PATCH
+- `interviewSetupSchema` (`jobId uuid`, `type` enum, `difficulty` enum, `questionCount 3-15`) — `app/api/interviews`, `api/interview/sessions`
+- `interviewAnswerSchema` (`sessionId uuid`, `questionId uuid`, `answer 1-5000 trim`) — `api/interview/answers`, plus `interviewSessionPatchSchema` status enum
+- `resumeAiAnalyzeSchema` (`resumeVersionId uuid`, `jobId optional uuid`) — `api/resume-ai/analyze`
+- `analyticsRecordSchema` + `analyticsTrendsQuerySchema` (`days 7|30`) — `api/analytics/*`
+- `public/[slug]/view|video-play|resume-download` slug `3-64` length check + `referer` slice 512, `ip`/`userAgent` header-derived
+- `video` upload now validates `jobId` UUID regex + `durationSec 0-600` after Phase 6 fix (`app/api/video-resume/video/route.ts:40`), `validateVideoBuffer` (empty, >100MB, magic bytes EBML `0x1A 0x45 0xDF 0xA3` / ftyp) + MIME allowlist `video/webm|video/mp4`
+
+Sensible maxima: resumes 10MB (bucket + `pdfValidation`), videos 100MB / 180s, JD 20k, answer 5k, trends limit 500 rows.
+
+### 27.8 XSS / SSRF / CSRF / SQL Injection
+
+- **XSS:** `grep dangerouslySetInnerHTML|innerHTML|eval(|new Function` → only docs; no `dangerouslySetInnerHTML` in `app/` `components/` — user/AI text rendered via `Textarea` value, `whitespace-pre-wrap` `<p>`, `list-disc <li>` text, never HTML. `linkedinUrl`/`portfolioUrl` sanitized via `isSafeHttpUrl`.
+- **CSRF:** app uses Supabase `httpOnly` `sb-*` cookie + `createServerClient` session refresh in `middleware.ts:22`; state-changing `POST/PATCH` routes verify `auth.getUser()` server-side per existing security model — no additional CSRF token needed for same-origin cookie (Vercel same-domain).
+- **SSRF:** no `fetch(userInputUrl)` anywhere; only `fetch` to internal `/api/*` or Gemini API via server.
+- **SQL injection:** Supabase query builder only (`eq`, `insert`, `select("*")`); no raw `sql` construction.
+
+### 27.9 AI Safety, Provider Fallback & Non-Fabrication
+
+- Providers: `lib/ai/provider.ts:25` `getAIProvider()` → `mock` when `NODE_ENV=test` or `!GEMINI_API_KEY` or `AI_PROVIDER=mock`; `gemini` when `AI_PROVIDER=gemini|""` and key present — `throw` on unsupported value
+- All 7 services (`resumeParser`, `jobParser`, `resumeJobMatcher`, `scriptGenerator`, `interviewQuestionGenerator`, `interviewAnswerEvaluator`, `resumeAnalyzer`) share `MockProvider` + `GeminiProvider` with strict Zod schemas (`parsedResumeSchema`, `resumeJobMatchResultSchema`, `generatedScriptSchema`, `interviewQuestionsResultSchema`, `interviewFeedbackSchema`, `resumeAnalyzerResultSchema`) — malformed → `500 INTERNAL_ERROR` safely
+- Scores bounded `0-100` via `check (overall_score >=0 <=100)` + Zod `min(0).max(100)` + `clampRate`
+- `NON_FABRICATION_PREAMBLE` (`lib/ai/safety/nonFabrication.ts:9`) injected in every Gemini prompt (resumeParser/jobParser/match/script/questions/evaluate/analyze); `Mock*` mirrors with `[NEEDS_USER: …]` insertion when `completionScore<60` or empty profile — never invents metrics/techs/companies
+- API keys `GEMINI_API_KEY` server-only (assert `typeof window !== "undefined"` throw), never logged, minimal data in prompts (headline/summary/experiences.slice 0-3/skills.slice 0-10)
+- Mock is default for CI — all 101 tests pass without live Gemini
+
+### 27.10 Loading / Error / Empty / Form UX Audit
+
+Every major async flow has tri-state:
+
+- **Career Profile:** `CareerProfileClient` with resume upload modal + review sheet; empty → “Upload resume to hydrate profile”
+- **Video Resume:** Step 1 `JobForm` with Zod errors + empty `Create a job to use Video Resume or Interview Coach` ; Step 2 `ScriptAndRecorderClient` loading `Working…` + `Generate Script`, error `ErrorAlert`, empty `no career profile → Go to Career Profile`; Step 3 publish loading `Updating…`/`Saving…`, error banner, empty “No video yet — record on previous step”
+- **Interview Coach:** `InterviewSetupClient` empty `Career Profile Required` / `No Jobs Yet → Create a Job`, recent sessions list or “No sessions yet”, loading `Generating questions…`/`Evaluating…`, error banner, answer `maxLength 5000` + counter, skip/complete flows
+- **Resume AI:** `ResumeAiClient` empty `No Resume Yet → Go to Career Profile`, job picker empty `General analysis`, loading `Analyzing…`, error `error-container`, result `ScoreRing` + amber `Job Alignment` or empty “No analyses yet”
+- **Analytics:** `app/(dashboard)/analytics/page.tsx:1` empty `No published profile yet → Go to Video Resume` with 3 “—” KPI cards, else `AnalyticsClient` with `Loading trends…` + error silent catch
+- **Public Profile:** video `videocam_off` empty, resume `Resume unavailable` disabled
+- **Applications:** empty `EmptyState` with O-001 note, populated table
+
+Form UX: every submit button `disabled={loading}` prevents double-submit (`InterviewSetupClient:190`, `ResumeAiClient:176`, `ScriptAndRecorderClient:186`, `PublishClient:85`, `InterviewSessionClient:270`); validation messages inline via `firstIssue.message`, success toast via state, Cancel/Back use `router.push` or `setEditing(false)`.
+
+### 27.11 Video / Interview / Resume AI / Analytics Regression
+
+- **3A Match:** job creation/deduplication (7-day `description_hash`), Career Profile reuse, match score ring `r=45 dasharray 282.7` (`MatchScoreRing`), `SkillsBreakdown` chips strong/partial/missing, `TalkingPoints` 3 items — verified at `match/[jobId]/page.tsx`
+- **3B Script+Record:** initial/regenerate/shorten/natural via `POST /api/video-resume/script` with `mode` enum, edit/save via `PATCH`, recording `useMediaRecorder` (requesting/ready/recording/recorded/error, 180s auto-stop, `requestAnimation` teleprompter, `URL.createObjectURL` preview) + upload fallback `<input type=file accept=video/*>` → `POST /api/video-resume/video` 100MB magic-byte check, preview 180s max, before/after `retake` — `script/[jobId]/page.tsx` + `ScriptAndRecorderClient`
+- **3C Publish:** `public_profiles` slug immutable (`nanoid(10).toLowerCase()` preserve `is_published`), `PublishClient` Copy Link (clipboard + fallback `execCommand`), Publish/Unpublish `PATCH /api/public-profile/[id]` (ownership `eq user_id`), public `/p/[slug]` video 300s signed URL, resume 60s signed URL — `publish/[jobId]/page.tsx`
+- **Interview Coach:** job selection reuses `jobs` (`InterviewSetupClient` `<select>`), `createSession` verifies `JobService.getJobById`, `InterviewQuestionGenerator` produces behavioral/technical/mixed `count 3-15`, difficulty easy/medium/hard, answer `Textarea 5000` → `InterviewAnswerEvaluator` score `0-100` + strengths/weaknesses/improvement/betterAnswer, progress `answered/total/avg/strongest/weakest`, completion `generateSessionFeedbackIfNeeded` → `interview_feedback` bento `overallScore/label/dimensions/strengths/weaknesses/aiRecommendation`, ownership `eq user_id` on all tables — `interview/[sessionId]/page.tsx` + `InterviewSessionClient`
+- **Resume AI:** resume selection (`listResumeVersions`), optional job, `analyze` → quality `0-100` + 5 section scores + strengths/issues/recommendations + keyword suggestions + `jobAlignment` (skill intersection) + `[NEEDS_USER]` yellow dashed — `resume-ai/page.tsx` + `ResumeAiClient`; two-pane editor deferred, not required for flow
+- **Analytics:** `recordPublicView` 1h dedup `public_profile_views` + mirror `analytics_events`, `recordPublicVideoPlay|ResumeDownload` via service-role slug lookup, `getOverview` 6 KPIs + `videoPlayRate/resumeDownloadRate 0-100`, `getTrends` 7/30 day `TrendPoint[]` with `date` keys, aggregation correctness tested — `analytics/page.tsx` + `AnalyticsClient`; failure does not break public profile/video/resume download (fire-and-forget + `.catch`)
+
+No Phase 4/5 behavior broken (101 tests still green).
+
+### 27.12 Analytics Privacy
+
+- Owner aggregates only: `getOverview/getTrends` filter `where user_id = auth.uid()` (private `analytics_events`) and `select` on `public_profile_views` via `public_profile_id in (select id where user_id=auth.uid())`
+- Public visitors cannot discover: `id`/`user_id`/`ip_hash`/`user_agent`/`email`/internal `profileId`/JD/answers/Resume AI analysis — public endpoints return `{ok}` or whitelisted `PublicProfileViewDTO` only
+- IP handling: `ip_hash = sha256(ip | dailySalt | profile.id).slice(0,32)` with daily-rotated `dailySalt = new Date().toISOString().slice(0,10)`, 1h dedup (`gte viewed_at oneHourAgo`), never stores raw IP (`AnalyticsService.recordPublicView:97`); `user_agent` truncated 512, `referer` bucketed to `direct|linkedin|indeed|google|other`
+- `analytics_events.metadata` stores only `{device, referer}` for views — no PII
+
+### 27.13 Storage Audit
+
+Three **private** buckets `resumes` (10MB `application/pdf` only, magic `%PDF` + encrypted check, forever immutable `resumes/{userId}/{versionId}.pdf`, 60s signed URL), `videos` (100MB `video/webm|video/mp4`, EBML `0x1A 0x45 0xDF 0xA3` / `ftyp`, ≤180s advisory, `videos/{userId}/{jobId}/{videoId}.webm`, 300s signed URL), `interview-answers` (100MB, 30d rolling, 300s owner-only) — `supabase/migrations/010_storage_buckets.sql:1` `public = false`, `file_size_limit` 10M/100M, `allowed_mime_types`, storage RLS `(storage.foldername(name))[1] = auth.uid()::text` per bucket.
+
+Ownership checks: `uploadVideoBuffer` validates `validateVideoBuffer` before `supabase.storage.from("videos").upload(storagePath, buffer, {contentType})` with `upsert:false`; keys are `nanoid()` / `UUID`, never client filename `../` canonicalizes; `createSignedDownloadUrl` uses `useServiceRole=true` only for public video preview where needed, otherwise `createClient()`.
+
+File validation: resumes `lib/storage/pdfValidation.ts:1` `%PDF` + `encrypted` + `size>10MB` reject; videos `lib/storage/videoValidation.ts:1` `EBML`/`ftyp` + `100MB` + `mimeTypeHint` fallback; MIME/magic depth is server-side, not just client `accept`.
+
+### 27.14 Database Migration Audit
+
+Do NOT push remotely (Phase 6 rule). Migrations `001`…`014` inspected in order, no duplicate ids, contiguous:
+
+- `001_init_users_and_trigger.sql` — `users` + `handle_new_user()` trigger on `auth.users` → `users.id=auth.users.id`
+- `002_core_profile.sql` — `career_profiles` (1 per user unique `user_id`) + `experiences|education|skills|projects|certifications` with FK `cascade` + `completed_score 0-100` + triggers
+- `003_resumes_and_versions.sql` — `resumes` + immutable `resume_versions` (`version_number` monotonic `unique(resume_id,version_number)`, append-only `insert` only via RLS)
+- `004_jobs.sql` — `jobs` (`description_hash` dedup at app `computeJobHash` 7-day window) + `job_matches` (`score 0-100`, `strong/partial/missing` legacy arrays)
+- `005_video_resume.sql` — `scripts` (`unique user_id,job_id`), `videos` (`storage_path`, `file_size_bytes bigint`, `status`), `public_profiles` (`slug unique nanoid10`, `is_published`)
+- `006_analytics.sql` — `public_profile_views` (`ip_hash`, `viewed_at`, `dedup` index `profile_id,ip_hash,viewed_at`)
+- `007_interviews.sql` — `interviews` + `interview_questions` + `interview_answers` + `interview_feedback` + `interview_answer_feedback`
+- `008_resume_ai.sql` — `resume_analyses` (`category_scores jsonb`, `model`) + `resume_suggestions` (`status pending/accepted/rejected`)
+- `009_rls_policies.sql` — `enable row level security` on every table + `using(user_id=auth.uid()) with check(...)` per table; `anon insert views with check(true)` + `owner read views` via `public_profile_id in (select ...)`; whitelisting view `public_profile_public_view`
+- `010_storage_buckets.sql` — 3 private buckets + storage.objects RLS `foldername(name)[1]=uid`
+- `011_phase3_fixes.sql` — `job_matches.resume_version_id drop not null` + `breakdown jsonb default '[]'` + `public_profiles.resume_version_id drop not null`
+- `012_interview_coach_phase4.sql` — adds `updated_at` + expands `status` (`draft|in_progress|completed|creating|active|abandoned|feedback_ready`) + `category/difficulty/ideal_focus` + `answer/feedback/score/updated_at` + indexes
+- `013_analytics_events.sql` — `analytics_events` (`event_type check` 9 values, `user_id` FK, `public_profile_id`/`job_id` FK, `metadata jsonb`, indexes `user_created|profile|job|type|user_type_date`, RLS `user_id=auth.uid()`)
+- `014_phase6_completion_fixes.sql` **NEW Phase 6** — fixes `videos.file_size` vs `file_size_bytes` mismatch (canonical `file_size_bytes bigint`, adds `file_size` compat + backfill, `updated_at timestamptz` + trigger `handle_videos_updated_at`), ensures `public_profiles.updated_at` trigger, index `jobs.source`, index `analytics_events.public_profile_id`, re-asserts `public_profile_views enable RLS`, index `resume_analyses.job_id`
+
+**Schema alignment verified:** foreign keys `user_id FK cascade` everywhere (RLS requires redundant `user_id`), indexes on `user_id`, `created_at`, `slug`, `question_id`, `interview_id`; triggers `handle_updated_at` on mutable tables; `public_profiles.slug` immutable via service preserve; `videos.file_size_bytes` now matches `lib/services/videoResumeService.ts:329` (`file_size_bytes: uploadResult.fileSize`) and read fallback `file_size_bytes ?? file_size` — eliminates PGRST204 unknown column runtime error.
+
+Migration set is ordered, idempotent `if not exists`, no conflicting constraints, no missing `enable row level security` (all 9+10+13+14 assert).
+
+```
+DATABASE READY FOR FINAL INTEGRATION
+```
+
+### 27.15 Environment Audit
+
+- `.env.local` gitignored (verified via `.gitignore`), `.env.example` committed with safe placeholders only
+- Public vars (`NEXT_PUBLIC_*`): `NEXT_PUBLIC_SUPABASE_URL=https://<ref>.supabase.co`, `NEXT_PUBLIC_SUPABASE_ANON_KEY=…` (RLS-scoped), `NEXT_PUBLIC_APP_URL=http://localhost:3000` — safe to embed
+- Server-only secrets: `SUPABASE_SERVICE_ROLE_KEY=your-service-role-key`, `GEMINI_API_KEY=your-gemini-api-key` — never `NEXT_PUBLIC_` prefix; guarded by `lib/env.ts:33` build-time throw on `NEXT_PUBLIC_SUPABASE_SERVICE_ROLE_KEY`, and `lib/supabase/service.ts:10` / `lib/ai/providers/gemini.ts:30` runtime `typeof window !== "undefined"` throw
+- `GEMINI_MODEL=gemini-1.5-pro`, `AI_PROVIDER=gemini|mock` — server-only, switches via `lib/ai/provider.ts:25`
+
+### 27.16 Dependency Audit
+
+`package.json:12` pinned versions: `next 14.2.35`, `react 18`, `zod 4.5.4`, `@supabase/ssr 0.12.5`, `@supabase/supabase-js 2.112.4`, `@google/generative-ai 0.24.1`, `@hookform/resolvers 5.9.1`, `@radix-ui/*`, `lucide-react 1.37`, `nanoid 6.0.1`, `tailwind-merge`, `clsx`, `class-variance-authority`; `devDeps` `tsx 4.23.13`, `typescript 5`, `tailwindcss 3.4.1`, `eslint 8`, `eslint-config-next 14.2.23`. No unused/duplicate/unnecessary new packages; `recharts`/`puppeteer`/`ffmpeg` not installed per DO NOT. New Phase 6 dep none — only `lib/rateLimit.ts` native `Map` (no extra dep).
+
+No aggressive upgrades (Next/React/Supabase kept as specified).
+
+### 27.17 Accessibility Audit
+
+- Semantic buttons: all actions are `<button>` or `Button` (`type="button"`), never `<div onClick>` — `SideNavBar` `Link`, `MobileDrawer`, `PublishClient` `Copy Link` has `aria-label`
+- Labels: every `Textarea`/`select` has `<label>` or `text-label-md font-medium` sibling; `InterviewSessionClient` `<label>Your answer</label>` + `maxLength 5000` counter; `ResumeAiClient` `Resume Version`/`Target Job` labels with `focus:ring-2 focus:ring-secondary` visible focus
+- Keyboard: `sideNav` uses `Link`, `onClick` via `button`, tabbable; focus ring `ring-secondary` on selects
+- Headings: `Dashboard` `h1 Welcome back` + `h3 Career Profile` + `h3 Quick Actions` + `h4` cards, `Public Profile` `h1 displayName` + `h2` Experience/Education/Skills/About with `border-b`, `Analytics` `h1` + `h3 Overview` + `h4` Engagement/Trends — meaningful hierarchy
+- Alt text: `img` avatar has `alt={user.name}`; video has fallback text `Your browser does not support video. <a>Download`
+- Error messages: `role=log` omitted but `ErrorAlert` `bg-error-container text-on-error-container` with `text-body-sm`, actionable
+- Contrast: `primary/#0F172A` on `background #f8f9ff` 14:1, `secondary #4648d4` on white 6.2:1 — sufficient; `onSurfaceVariant #5A5A5A` on white 7:1
+- Video controls: `controls playsInline preload="metadata"` on recruiter + publish preview
+
+No redesign; only small `aria-label`/`scope`/`sr-only` added.
+
+### 27.18 Responsive UI Audit
+
+Checked bento grids at mobile/tablet/desktop:
+
+- `Dashboard` `grid-cols-1 md:grid-cols-12 gap-sm` → 8+4 header, 3+3+3+3 KPI row, no overflow (table `overflow-x-auto`)
+- `Career Profile` `ReviewExtractedDataSheet` `Sheet` responsive, `ResumeUploadModal` centered
+- `Video Resume` Stepper `VideoResumeStepper 1..3` horizontal scroll-safe; Match `MatchScoreRing` flex wrap; Script `ScriptAndRecorderClient` `grid lg:grid-cols-12` 5+7, recorder `aspect-video`
+- `Publish` `grid lg:grid-cols-12 7+5`
+- `Public Profile` `max-w-4xl px-gutter` centered header, `aspect-video` hero, single resume card `p-12 md:p-12`, `flex-wrap` skills chips
+- `Interview Coach` Setup `grid lg:grid-cols-12 8+4` type `grid sm:grid-cols-3`, Live `InterviewSessionClient` dot nav `flex gap-1.5`, Results bento `grid md:grid-cols-3`
+- `Resume AI` selectors `p-6` stack, `grid md:grid-cols-2 lg:grid-cols-3` section cards, `grid lg:grid-cols-2` strengths/issues
+- `Analytics` KPI `grid-cols-2 md:grid-cols-3 lg:grid-cols-6`, Engagement `grid md:grid-cols-3`, Trends `flex items-end 32*60px` bars + `overflow-x-auto` table
+
+No new design system — Tailwind `container-max 1280` + `gutter 24` preserved; no horizontal overflow at 375/768/1280 viewport.
+
+### 27.19 Performance Audit
+
+- Client components only where needed: `InterviewSetupClient`, `InterviewSessionClient`, `ResumeAiClient`, `AnalyticsClient`, `ViewBeacon`, `ScriptAndRecorderClient`, `PublishClient`, `useMediaRecorder` → `“use client”`; pages `app/(dashboard)/*|/p/[slug]` remain RSC `server` (avoids bundle bloat)
+- No repeated API calls: `Promise.all` parallel fetches in `analytics/page.tsx:19`, `interview/page.tsx:17`, `dashboard/page.tsx:25`, `resume-ai/page.tsx:18` — single roundtrip per page
+- DB queries bounded: `limit(1|3|5|500)` on large tables, indexes on `user_id,created_at`
+- Signed URLs short-lived (60/300s), not re-fetched on every render (`60s resume`, `300s video`)
+- `useMediaRecorder` object URL leak fixed: `previewUrlRef` stores latest string, `useEffect` cleanup `URL.revokeObjectURL(previewUrlRef.current)` no longer re-subscribes on every `previewUrl` string change (`hooks/useMediaRecorder.ts:137`) — leak closed
+- `ViewBeacon` delayed 800ms + `keepalive:true` + `.catch` avoids main-thread blocking; 1h dedup prevents DB pressure
+- No unnecessary AI calls: `matchJob` dedup 7-day hash, `getOrCreateScript` returns existing on `initial` mode without regeneration, `RateLimit` on AI routes
+
+No premature optimization; `recharts` not added, lazy aggregation fine at <10k.
+
+### 27.20 Route Inventory & Duplicate Alias Review
+
+`npm run build` route table (31 total, 0 missing):
+
+- **Marketing:** `/`, `/_not-found` static; `/p/[slug]` SSR 300
+- **Auth:** `/login`, `/signup`, `/auth/callback`, `/auth/signout`
+- **Dashboard:** `/dashboard`, `/onboarding`, `/career-profile`, `/analytics`, `/applications`, `/settings` (stub `154 B`), `/dashboard` (stub)
+- **Video Resume:** `/video-resume` (4.01kB), `/video-resume/match/[jobId]` (1.83kB), `/video-resume/script/[jobId]` (5.84kB), `/video-resume/publish/[jobId]` (3.12kB)
+- **Interview:** `/interview` (3.66kB), `/interview/[sessionId]` (4.3kB)
+- **Resume AI:** `/resume-ai` (3.72kB)
+- **API:** `/api/analytics/{events,overview,trends}`, `/api/interview/{answers,questions,sessions,sessions/[id]}`, `/api/interviews{,/ [id]}`, `/api/profile{,/resume,/resume-versions}`, `/api/public-profile/[id]`, `/api/public/[slug]{,/view,/video-play,/resume-download}`, `/api/resume-ai/analyze`, `/api/video-resume/{match,script,video}`
+
+Auth behavior per `middleware.ts:4` `PROTECTED_PREFIXES dashboard|career-profile|video-resume|interview|resume-ai|analytics|settings|onboarding` → 302 `/login?next=…` when `!user`; `/p/*` is public `PUBLIC_PATHS` + `pathname.startsWith("/p/")`.
+
+Duplicate alias `api/interview/*` vs `api/interviews/*` — **intentionally kept**: `api/interviews` (plural) is legacy alias per `docs/architecture/03_API_ARCHITECTURE.md:91` (`GET /api/interviews` list vs `POST /api/interviews` create) while new `api/interview/sessions` etc. is spec STEP 3 (`docs/implementation/03_INTERVIEW.md:91`) nested shape; similar `api/public-profile/[id]` vs `api/public/[slug]` — separate concerns (owner publish toggle vs recruiter view). Docs explicitly require both; do not remove.
+
+### 27.21 Applications Page Deep Dive
+
+Per STEP 27, incomplete page must not appear broken. Phase 6 implementation:
+
+- `app/(dashboard)/applications/page.tsx:1` is now `async` RSC, `dynamic="force-dynamic"`, fetches `JobService.listJobs(userId)` (owner-derived `user_id = auth.uid()`), zero mock data
+- `jobs.length===0` → `EmptyState icon work_history title No applications yet description Jobs you create … actionHref /video-resume` + honest amber `Card` “Advanced filters, match score and row actions deferred (O-001) — Data model ready”
+- `jobs.length>0` → `Card` table `Job|Company|Source|Created|Actions` with `Badge` source, `Created` localeDate, Actions `Video|Interview|Resume AI` Links (cross-module reuse), plus footer `Card p-4 honest state Filters/match score/video status deferred (O-001) — single source`
+- No fake records (never `["Google","Microsoft"]` hardcode), navigation is intentional (SideNav + Dashboard Recent Applications both link here), design language `Card` `Badge` `EmptyState` reused
+
+Requirements met without inventing ATS.
+
+### 27.22 Rate Limiting
+
+Deferred large system per `docs/architecture/03_API_ARCHITECTURE.md:204`, but lightweight in-memory hook added (fails open, no dep):
+
+- New `lib/rateLimit.ts:1` — `Map<string,Bucket>` per IP `count/resetAt`, `checkRateLimit(key,limit,windowMs)` + helper `rateLimitByRequest(request,{keyPrefix,limit,windowMs})` deriving `x-forwarded-for|x-real-ip` prefix, periodic `setInterval` 60s cleanup with `unref`
+- Sensitive public endpoints:
+
+```
+POST /api/public/:slug/view         → 60/min/IP per slug (prevents beacon flood)
+POST /api/video-resume/match        → 10/hour/IP (LLM cost)
+POST /api/resume-ai/analyze         → 10/hour/IP (LLM cost)
+POST /api/interviews                → 6/hour/IP (interview creation)
+```
+
+Future integration point clear — swap `Map` for Vercel KV / Upstash with same `checkRateLimit` API; `docs/modules/05_RESUME_AI.md:82` + `06_ANALYTICS_ARCHITECTURE.md:100` already spec 6/h and 10/h.
+
+Documented gap: no global distributed limit yet; Vercel edge region needs KV before multi-instance deploy (covered by `ARCHITECTURE.md:230` deployment checklist).
+
+### 27.23 Full Test Suite
+
+No inflating counts — only Phase 6 real fixes are tested:
+
+- `npx tsx scripts/run-test.mjs` **40/40 PASS** (12 Phase2 PDF/placeholder/completion/profile + 16 Phase4 interview + 12 Phase5 resumeAI/analytics)
+- `npx tsx tests/phase4_interview.test.ts` **20/20 PASS** (19 listed + boundary 5000)
+- `npx tsx tests/phase5.test.ts` **26/26 PASS** (12 Resume AI + 14 Analytics including public/private + trends)
+- **NEW `npx tsx tests/phase6.test.ts` 35/35 PASS:**
+
+  Navigation 2 (routes exist, applications honest), Public/Private 5 (whitelist, 404, URL sanitize, beacon non-blocking, download resilient), Auth/IDOR 4 (derive-from-auth, IDOR job/session, video UUID+duration), Service-role 2 (NEXT_PUBLIC leak 0, guard), Validation 5 (matchRequest, scriptGenerate UUID, interviewAnswer 5000, video magic/empty, analyticsTrends), XSS 1 (no `dangerouslySetInnerHTML`), AI safety 2 (preamble + placeholder regex), RateLimit 3 (threshold block, existence + public view wired), Storage 2 (private buckets + size/magic), Migrations 3 (014 ordered, videos column fix, RLS), Env 1 (no provider import in client), Form UX 1 (disabled), A11y 1 (scope/col), Perf 1 (revokeObjectURL + stopTracks) — `lib/rateLimit.ts:51 downlevelIteration` fixed to `forEach` to pass build, page6:320 env check excludes UI text `GEMINI_API_KEY` mention via `from "@/lib/ai/providers"` pattern.
+
+All previous tests continue passing; strict `npx tsc --noEmit` passes after 6:32 fix.
+
+### 27.24 Final Security Review
+
+Covers `07_SECURITY.md:218` checklist:
+
+- **Authentication:** private routes `auth.getUser()` + `middleware.ts` guard + `(dashboard)/layout.tsx` double-check `redirect("/login")`
+- **Authorization:** `user_id=auth.uid()` owner check on every `select|insert|update` (Profile, Resumes, Jobs `getJobById`, Matches `eq user_id`, Scripts/Videos `eq user_id`, PublicProfiles `eq user_id`, Interview 5 tables `eq user_id` + `interview_answer_feedback in (select ...)`, ResumeAI `eq user_id` + job, Analytics `eq user_id` + `in(select…)`), typed `403` on IDOR
+- **IDOR:** verified by code audit + test simulation (User A cannot load User B job/session/resume/analytics)
+- **XSS:** no `dangerouslySetInnerHTML`/`innerHTML`/`eval`/`new Function`; render via text; safe URL filter
+- **CSRF:** same-origin `httpOnly` cookie + `createServerClient` refresh; state-changing routes follow existing model (no extra token needed)
+- **SSRF:** no arbitrary URL fetch from user input
+- **SQL injection:** no raw SQL string
+- **File upload:** `pdfValidation 10MB %PDF + encrypted`, `videoValidation 100MB EBML/ftyp + mime fallback`, storage private `file_size_limit` + `allowed_mime_types`
+- **Storage:** private buckets + `createSignedDownloadUrl` TTL 60/300, ownership path `videos/{userId}/{jobId}/{videoId}.webm`, `file_size_bytes` canonical
+- **Secrets:** `SUPABASE_SERVICE_ROLE_KEY`/`GEMINI_API_KEY` never `NEXT_PUBLIC_`, server-only guard
+- **AI:** preamble + schema validation + score clamp + `[NEEDS_USER]` + server-only key + prompts minimal data
+- **Public profile:** whitelist only, no JD/match/interview/ResumeAI/analytics/internal ID leakage
+- **Analytics privacy:** aggregates only, `ip_hash` 32 + 512 UA + 1h dedup, no visitor identity
+
+**Remaining limitation honestly documented:** `lib/rateLimit.ts` is in-memory per-instance (fails open) — not yet distributed via KV; sufficient for hardening, replaced before multi-region prod (`ARCHITECTURE.md` deployment checklist).
+
+### 27.25 Final User Flow Walkthrough (Code-Level)
+
+- **New candidate** `Login → Career Profile (upload resume → ReviewExtractedDataSheet staged hydration → PATCH /api/profile commit) → Create/select Job (Video Resume JobForm, duplicate hash 7d) → Match (score/breakdown/talkingPoints) → Script (initial→regenerate/shorten/natural→save) → Record (WebM 180s or upload) → Publish (slug immutable, Publish/Unpublish toggle) → Public /p/[slug] (recruiter view + beacon) → Owner Analytics (Views/Plays/Downloads/Trends)` ✓
+- **Interview preparation** `Job (shared) → Interview Coach job picker → Create Session (type/difficulty/count) → Questions (behavioral/technical/mixed, category/difficulty/idealFocus) → Answer (Textarea 1-5000) → AI Feedback (score 0-100 + strengths/weaknesses/improvement/betterAnswer) → Progress (total/answered/avg/strongest/weakest) → Complete → Feedback bento (overall/label/dimensions/aiRecommendation)` ✓
+- **Resume improvement** `Resume (resume_versions) → Resume AI (select + optional job) → Analyze (quality 0-100 vs alignment, 5 section scores 0-100 + strengths/issues/recommendations/keywords/jobAlignment + [NEEDS_USER]) → Recommendations (STAR/verb guidance, never fabrication)` ✓
+- **Recruiter/public** `Public URL /p/[slug] → Centered name/title → Hero video (300s signed URL inline) → Resume card (Experience/Education/Skills/About) → Actions (Play/Download/LinkedIn/Portfolio safe URLs/Copy)` ✓
+- **Owner analytics** `Analytics → Overview 6 KPIs (Views/Downloads/Plays/Applications/Interviews/Analyses) → Engagement rates (videoPlayRate 0-100, resumeDownloadRate 0-100) → Trends (7/30 daily bars + table, privacy-safe aggregates)` ✓
+
+Every major flow has sensible next action — no dead end blank screen.
+
+### 27.26 Final Code Quality
+
+- No `console.log` in production paths (only `console.warn` non-fatal `AnalyticsService.recordEvent failed` and `recordPublicView error` kept as structured server warning)
+- No debug/hardcoded data left: dashboard hardcoded Google/Microsoft, 84/78/12 cards all removed; only `Alex Mercer` remains in `lib/ai/providers/mock.ts` + tests as canonical synthetic fixture per `GEMINI.md:84`
+- No unused imports after `tsx fix: previewUrlRef` (hook) + `dashboard: remove interviews var` + `rateLimit: downlevelIteration → forEach`
+- No secrets logged (grep `GEMINI_API_KEY|SUPABASE_SERVICE_ROLE_KEY` in handlers → 0 hits)
+- No internal IDs unnecessarily logged (structured logger `userIdHash` only)
+
+No aggressive refactor of stable Phase 1-5 code.
+
+### 27.27 Final Verification Commands Executed
+
+```bash
+npm run build        # Compiled successfully — 31 routes (30 static+dynamic) + Middleware 86.3kB, 3 img warnings pre-existing
+npm run lint         # 0 errors, 3 warnings no-img-element
+npx tsc --noEmit     # 0 errors (after rateLimit forEach fix)
+npx tsx scripts/run-test.mjs        # 40/40
+npx tsx tests/phase4_interview.test.ts  # 20/20
+npx tsx tests/phase5.test.ts            # 26/26
+npx tsx tests/phase6.test.ts            # 35/35 (new)
+```
+
+Plus: `git status` (21 modified + 39 untracked incl. 014), `git diff --stat` 3325 +664 lines, `grep service-role|NEXT_PUBLIC|dangerously|TODO` verifications per audit.
+
+### 27.28 Git Check — Per STOP
+
+```
+git status
+git diff --stat
+```
+
+**Do NOT** commit, **Do NOT** `push`, **Do NOT** `supabase db push`, **Do NOT** deploy to Vercel. User reviews diffs before final integration pass — exactly as specified in Phase 6 STOP.
+
+### 27.29 What Was Not Done in Phase 6
+
+Per CRITICAL STOP RULE:
+
+- No `supabase db push` / `supabase db reset` / remote project mutation
+- No `git push` / `git commit` auto
+- No Vercel/production deployment or production credentials creation
+- No Git history alteration
+- No billing / payments / chatbot / Python / FFmpeg / unrelated features
+- No new Stitch mock invention
+
+Migrations `014` exists repository-only; remote `lvmayqmhtnqdxwoboews` stays untouched until integration pass.
+
+---
+
+## 28. FINAL RULE
 
 > **The most important rule in this entire document.**
 

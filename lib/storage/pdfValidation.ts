@@ -70,7 +70,7 @@ export function validatePdfBuffer(
   const combined = rawString + endString;
 
   // Simple heuristic for encryption detection
-  if (/\b\/Encrypt\s+\d+\s+\d+\s+R\b/.test(combined) || /\b\/Encrypt\s*<</.test(combined)) {
+  if (/\/Encrypt\s+\d+\s+\d+\s+R/.test(combined) || /\/Encrypt\s*<</.test(combined)) {
     return {
       valid: false,
       error: "This PDF is password-protected or encrypted. Please export an unlocked version.",

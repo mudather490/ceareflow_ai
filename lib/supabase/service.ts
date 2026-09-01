@@ -5,6 +5,8 @@ import { createClient as createSupabaseClient } from "@supabase/supabase-js";
  * Used ONLY in:
  *  - app/api/public/* (beacon)
  *  - lib/storage/signedUrl.ts
+ *  - lib/services/videoResumeService.getPublicProfileBySlug (public recruiter view, is_published=true only)
+ *  - lib/services/analyticsService recordPublicView/* (public beacon)
  */
 export function createServiceClient() {
   if (typeof window !== "undefined") {

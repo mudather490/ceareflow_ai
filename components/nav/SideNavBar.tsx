@@ -118,12 +118,13 @@ export function SideNavBar({
       {/* CTA */}
       <div className="mt-4 px-2">
         <Link
-          href="/applications"
+          href="/video-resume"
           className="w-full bg-primary text-on-primary py-3 rounded-lg flex items-center justify-center gap-2 hover:bg-surface-tint transition-colors text-label-md font-semibold"
         >
           <span className="material-symbols-outlined text-[18px]">add</span>
           New Application
         </Link>
+        <p className="text-label-sm text-on-surface-variant text-center mt-2">Creates a tracked job → Video/Interview/AI</p>
       </div>
     </nav>
   );

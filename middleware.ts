@@ -67,8 +67,16 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(url);
   }
 
-  // Authenticated users visiting auth pages -> redirect to dashboard
+  // Authenticated users visiting auth pages -> redirect to dashboard, but respect safe next param if present
   if (user && (pathname === "/login" || pathname === "/signup")) {
+    const nextParam = request.nextUrl.searchParams.get("next");
+    const isSafeNext = nextParam && nextParam.startsWith("/") && !nextParam.startsWith("//") && !nextParam.includes("://");
+    if (isSafeNext) {
+      const url = request.nextUrl.clone();
+      url.pathname = nextParam;
+      url.search = "";
+      return NextResponse.redirect(url);
+    }
     const url = request.nextUrl.clone();
     url.pathname = "/dashboard";
     return NextResponse.redirect(url);

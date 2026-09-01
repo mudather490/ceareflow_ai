@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-restricted-imports
 import { createServiceClient } from "@/lib/supabase/service";
 import { createClient } from "@/lib/supabase/server";
 
@@ -28,3 +29,6 @@ export async function createSignedDownloadUrl(
 
   return data.signedUrl;
 }
+
+// Alias for backward compatibility with existing service imports
+export const createSignedUrl = createSignedDownloadUrl;

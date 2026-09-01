@@ -7,10 +7,23 @@
         "paths": [
           {
             "name": "@/lib/supabase/service",
-            "message": "service client is only allowed in app/api/public/* and lib/storage/signedUrl.ts"
+            "message": "service client is only allowed in app/api/public/*, lib/storage/signedUrl.ts, lib/services/videoResumeService.ts (public slug) and lib/services/analyticsService.ts (beacon)"
           }
         ]
       }
     ]
-  }
+  },
+  "overrides": [
+    {
+      "files": [
+        "lib/services/videoResumeService.ts",
+        "lib/services/analyticsService.ts",
+        "lib/storage/signedUrl.ts",
+        "app/api/public/**/*.ts"
+      ],
+      "rules": {
+        "no-restricted-imports": "off"
+      }
+    }
+  ]
 }

@@ -2,10 +2,19 @@ import { NextResponse } from "next/server";
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
 
+function sanitizeNext(input: string | null): string {
+  if (!input) return "/dashboard";
+  // Only allow path-absolute next values, reject open redirects
+  if (!input.startsWith("/") || input.startsWith("//") || input.includes("://")) return "/dashboard";
+  // Prevent CRLF injection
+  if (input.includes("\n") || input.includes("\r")) return "/dashboard";
+  return input;
+}
+
 export async function GET(request: Request) {
   const { searchParams, origin } = new URL(request.url);
   const code = searchParams.get("code");
-  const next = searchParams.get("next") ?? "/dashboard";
+  const next = sanitizeNext(searchParams.get("next"));
 
   if (code) {
     const cookieStore = await cookies();

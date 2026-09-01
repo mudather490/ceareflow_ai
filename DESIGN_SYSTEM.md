@@ -1,6 +1,6 @@
 # DESIGN SYSTEM — CareerFlow AI
 
-> Audit of all `dising stitch/` Stitch assets + `careerflow_ai/DESIGN.md`. This file is the implementation reference for `tailwind.config.mjs`, `components/ui/*`, and per-page styling. It intentionally re-states (not invents) the established tokens, so implementation PRs have a single authority to quote as `DESIGN_SYSTEM.md:line`.
+> Audit of all `stitch-designs/` Stitch assets (formerly `dising stitch/`) + `careerflow_ai/DESIGN.md`. This file is the implementation reference for `tailwind.config.mjs`, `components/ui/*`, and per-page styling. It intentionally re-states (not invents) the established tokens, so implementation PRs have a single authority to quote as `DESIGN_SYSTEM.md:line`.
 
 ---
 
